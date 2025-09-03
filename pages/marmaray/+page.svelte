@@ -445,8 +445,6 @@
 <Theme base="light">
   <!-- Replace Reuters header with minimal custom header -->
   <CustomHeader
-    logoPath={`${assets}/images/branding/Primary-alternative.png`}
-    brandName="Bluprint Graphics"
     navLinks={[
       { label: 'Discover', href: '#' },
       { label: 'News', href: '#' },
@@ -492,11 +490,7 @@
       >
         <MapboxMap
           height={1000}
-          stroke="#64748b"
-          strokeWidth={1.2}
-          fill="#e2e8f0"
           target={mapTarget}
-          highlightStations={true}
           incidentPoints={currentStep >= 7 && currentStep <= 9 ?
             null
           : incidentFeatures}
@@ -523,7 +517,6 @@
           cinematicBearing={currentStep === 8 ? 20 : 0}
           enable3DBuildings={currentStep === 8}
           visible={showMap}
-          showTitle={false}
         />
       </div>
 
@@ -715,15 +708,7 @@
 
       {#if currentStep >= 12 && currentStep <= 15}
         <!-- Yenikapı story with map focused on Yenikapı -->
-        <MapboxMap
-          height={500}
-          stroke="#64748b"
-          strokeWidth={1.2}
-          fill="#e2e8f0"
-          target="yenikapi"
-          highlightStations={true}
-          showTitle={false}
-        />
+        <MapboxMap height={500} target="yenikapi" />
       {/if}
 
       {#if currentStep === 16}
@@ -1342,44 +1327,6 @@
     :global(.site-headline .publish-time) {
       text-align: right !important;
     }
-
-    /* More aggressive overrides for all SiteHeadline elements */
-    :global(.site-headline *),
-    :global(.site-headline h1),
-    :global(.site-headline h2),
-    :global(.site-headline h3),
-    :global(.site-headline h4),
-    :global(.site-headline h5),
-    :global(.site-headline h6),
-    :global(.site-headline p),
-    :global(.site-headline div),
-    :global(.site-headline span),
-    :global(.site-headline a) {
-      text-align: right !important;
-      text-align-last: right !important;
-    }
-  }
-
-  /* İstanbul label styling */
-  .istanbul-label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.5rem;
-    text-align: right;
-  }
-
-  /* Standfirst under the headline */
-  .standfirst {
-    width: 100%;
-    max-width: none;
-    text-align: right;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #1a1a1a;
-    margin: 0.5rem 0 0 0;
   }
 
   /* Fullscreen map for steps 1 and 2 */
@@ -2591,454 +2538,6 @@
 
   /* (removed) section divider styles */
 
-  /* Yenikapı Story Styles */
-  .story-section {
-    max-width: 100%;
-  }
-
-  .story-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .section-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 1rem;
-  }
-
-  .factors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .factor-card {
-    background: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border-left: 4px solid #dc2626;
-
-    h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #1f2937;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: #6b7280;
-      line-height: 1.5;
-    }
-  }
-
-  .victim-quote {
-    background: #fef2f2;
-    border-left: 4px solid #dc2626;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-radius: 0 8px 8px 0;
-
-    p {
-      font-size: 1.1rem;
-      font-style: italic;
-      color: #991b1b;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    cite {
-      color: #6b7280;
-      font-size: 0.9rem;
-    }
-  }
-
-  .system-failures {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .failure-card {
-    background: #fef2f2;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid #fecaca;
-
-    h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #991b1b;
-      margin-bottom: 1rem;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-
-      li {
-        color: #7f1d1d;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid #fecaca;
-
-        &:last-child {
-          border-bottom: none;
-        }
-
-        &:before {
-          content: '•';
-          color: #dc2626;
-          font-weight: bold;
-          margin-right: 0.5rem;
-        }
-      }
-    }
-  }
-
-  .context-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-    text-align: center;
-  }
-
-  .stat-item {
-    .stat-number {
-      display: block;
-      font-size: 3rem;
-      font-weight: 700;
-      color: #dc2626;
-      line-height: 1;
-    }
-
-    .stat-label {
-      display: block;
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  /* Enhanced responsive adjustments for Yenikapı story */
-  @media (max-width: 768px) {
-    .factors-grid,
-    .system-failures {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .context-stats {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .story-title {
-      font-size: 1.8rem;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-    }
-
-    .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .factor-card,
-    .failure-card {
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .victim-quote {
-      padding: 1rem;
-      margin: 1.5rem 0;
-
-      p {
-        font-size: 1rem;
-      }
-
-      cite {
-        font-size: 0.85rem;
-      }
-    }
-
-    .stat-item {
-      .stat-number {
-        font-size: 2.5rem;
-      }
-
-      .stat-label {
-        font-size: 0.85rem;
-      }
-    }
-
-    .yearly-chart {
-      h3 {
-        font-size: 1.4rem;
-        margin-bottom: 2rem;
-      }
-
-      .chart-container {
-        height: 180px;
-        padding: 0.5rem;
-      }
-
-      .bar-group .bar {
-        width: 25px;
-      }
-
-      .legend {
-        padding: 1rem;
-        gap: 1rem;
-        flex-direction: column;
-        text-align: center;
-
-        .legend-item {
-          justify-content: center;
-        }
-      }
-    }
-
-    .comparison-chart {
-      h3 {
-        font-size: 1.4rem;
-      }
-
-      .comparison-item {
-        .stats {
-          gap: 0.75rem;
-        }
-
-        .stat .number {
-          font-size: 1.5rem;
-        }
-      }
-    }
-
-    .solution-cards {
-      gap: 1rem;
-
-      .solution-card {
-        h4 {
-          font-size: 1.1rem;
-        }
-
-        p {
-          font-size: 0.9rem;
-        }
-      }
-    }
-  }
-
-  /* Extra small mobile adjustments */
-  @media (max-width: 480px) {
-    .story-title {
-      font-size: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 1.3rem;
-    }
-
-    .factor-card,
-    .failure-card {
-      padding: 0.75rem;
-    }
-
-    .victim-quote {
-      padding: 0.75rem;
-
-      p {
-        font-size: 0.95rem;
-      }
-    }
-
-    .stat-item {
-      .stat-number {
-        font-size: 2rem;
-      }
-    }
-
-    .yearly-chart {
-      h3 {
-        font-size: 1.2rem;
-      }
-
-      .chart-container {
-        height: 150px;
-      }
-
-      .bar-group .bar {
-        width: 20px;
-      }
-    }
-
-    /* Extra small content warning adjustments - NYT Style */
-    .content-warning-step {
-      padding: 0;
-      margin-bottom: 50vh;
-      min-height: 70vh;
-
-      .content-warning {
-        padding: 0 1rem;
-
-        .warning-text {
-          font-size: 0.9rem;
-        }
-      }
-    }
-
-    /* Extra small step name display */
-    .step-name-display {
-      top: 0.25rem;
-      left: 0.25rem;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.4rem;
-    }
-  }
-
-  /* Blank section styling */
-  .blank-section {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: 2px dashed #dee2e6;
-    border-radius: 12px;
-    /* Visible transition space after maps */
-  }
-
-  .blank-content {
-    text-align: center;
-    color: #6c757d;
-    padding: 2rem;
-  }
-
-  .blank-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #495057;
-    font-weight: 500;
-  }
-
-  .blank-content p {
-    font-size: 1rem;
-    margin: 0;
-    opacity: 0.8;
-  }
-
-  /* Blank step styling for text content area */
-  .blank-step {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: 2px dashed #dee2e6;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    /* Full viewport height blank steps */
-  }
-
-  .blank-step-content {
-    text-align: center;
-    color: #6c757d;
-    padding: 3rem;
-    max-width: 600px;
-  }
-
-  .blank-step-content h3 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #495057;
-    font-weight: 600;
-  }
-
-  .blank-step-content p {
-    font-size: 1.2rem;
-    margin: 0;
-    opacity: 0.8;
-    line-height: 1.6;
-  }
-
-  /* Full-width video styling */
-  .video-wrapper.full-width {
-    position: fixed !important;
-    top: 6rem !important; /* Account for header height */
-    left: 0 !important;
-    width: 100vw !important;
-    height: calc(100vh - 6rem) !important; /* Subtract header height */
-    margin: 0 !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    overflow: hidden !important;
-    z-index: 99999 !important; /* Much higher z-index */
-  }
-
-  .video-wrapper.full-width .video-inner {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100vw !important;
-    height: 100% !important;
-    max-width: none !important;
-    max-height: none !important;
-  }
-
-  .video-wrapper.full-width .rg-video {
-    width: 100vw !important;
-    height: 100% !important;
-    max-width: none !important;
-    object-fit: cover !important;
-    background: red !important; /* Debug: Make video background red to ensure visibility */
-    display: block !important;
-    position: relative !important;
-  }
-
-  /* Two-column pane for yearly trend step */
-  .two-col-pane {
-    width: min(1100px, 92vw);
-    display: grid;
-    grid-template-columns: 65% 35%;
-    gap: 2rem;
-    align-items: start;
-    justify-content: center;
-    margin: 0 auto;
-    z-index: 12;
-  }
-
-  .two-col-pane .left-col,
-  .two-col-pane .right-col {
-    position: relative;
-  }
-  /* Desktop invisible driver for Step 6 */
-  .step-6-driver {
-    height: 60vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-
-  @media (max-width: 900px) {
-    .two-col-pane {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-  }
-
   /* Chart-only pane inside sticky graphic area */
   .chart-only-pane {
     width: min(50vw, 700px);
@@ -3046,32 +2545,6 @@
     margin-right: auto; /* anchor to left */
     background: none;
     padding: 0;
-  }
-
-  .chart-annotations {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .chart-annotations .badge {
-    background: rgba(248, 250, 252, 0.9);
-    border: 1px solid rgba(222, 226, 230, 0.6);
-    border-radius: 999px;
-    padding: 0.35rem 0.75rem;
-    font-size: 0.85rem;
-    color: #334155;
-  }
-
-  .chart-annotations .badge .label {
-    font-weight: 700;
-    margin-right: 0.35rem;
-  }
-
-  .chart-annotations .badge.highlight {
-    background: rgba(251, 191, 36, 0.15);
-    border-color: rgba(251, 191, 36, 0.5);
-    color: #92400e;
   }
 
   /* Prevent overlap on medium screens */
@@ -3087,40 +2560,6 @@
       width: min(92vw, 700px);
       margin: 0 auto;
     }
-  }
-
-  /* Chart card wrapper */
-  .chart-card {
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(148, 163, 184, 0.35);
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    padding: 1rem 1.25rem;
-    overflow: hidden; /* keep visuals within the panel */
-  }
-
-  /* Ensure chart contents never exceed the card; allow wrapping */
-  .chart-card :global(.time-chart) {
-    max-width: 100%;
-  }
-
-  .chart-card :global(.time-chart .chart-container) {
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
-    gap: 12px 16px;
-    align-items: end;
-    justify-items: center;
-    height: auto !important; /* override fixed height */
-    overflow: hidden; /* prevent spillover */
-    padding: 0 0.25rem;
-  }
-
-  .chart-card :global(.time-chart .time-segment) {
-    width: 100%;
-  }
-
-  .chart-card :global(.time-chart .time-segment .time-info) {
-    min-width: 0; /* allow labels to shrink within grid cell */
   }
 
   /* Text box styling - matching video wrapper appearance */
@@ -3172,42 +2611,6 @@
     }
   }
 
-  /* Video narrative text styling - matching existing box style */
-  .video-narrative-text {
-    color: #1a1a1a;
-    text-align: left;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: none; /* prevent inner/outer double shadow */
-    border: 1px solid rgba(209, 213, 219, 0.6);
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: 0;
-
-    h3 {
-      margin: 0 0 1rem 0;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      text-shadow: none;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #1a1a1a;
-      text-shadow: none;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-  }
-
   /* Mobile responsive text box adjustments */
   @media (max-width: 768px) {
     .text-box-inner {
@@ -3227,21 +2630,6 @@
         line-height: 1.6;
       }
     }
-
-    .video-narrative-text {
-      padding: 1.5rem;
-      max-width: 95%;
-
-      h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.75rem;
-      }
-
-      p {
-        font-size: 1rem;
-        line-height: 1.6;
-      }
-    }
   }
 
   @media (max-width: 480px) {
@@ -3251,21 +2639,6 @@
     }
 
     .narrative-text {
-      h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
-      }
-
-      p {
-        font-size: 0.95rem;
-        line-height: 1.5;
-      }
-    }
-
-    .video-narrative-text {
-      padding: 1rem;
-      max-width: 95%;
-
       h3 {
         font-size: 1.2rem;
         margin-bottom: 0.5rem;

@@ -12,11 +12,7 @@
     | 'atakoy'
     | 'guzelyali' = 'turkey';
   export let height: number = 500;
-  export let stroke: string = '#64748b';
-  export let strokeWidth: number = 1.2;
-  export let fill: string = '#e2e8f0';
-  export let highlightStations: boolean = true;
-  export let showTitle: boolean = false;
+
   // Incident dots props
   export let incidentPoints: GeoJSON.FeatureCollection | null = null;
   export let showIncidents: boolean = false;
