@@ -521,7 +521,7 @@
       </div>
 
       {#if currentStep === 6}
-        <!-- Step 6: Chart overlay (text box is in scrolling column) -->
+        <!-- Step 6: Chart overlay -->
         <div
           class="chart-only-pane"
           role="group"
@@ -546,6 +546,26 @@
                   ?.deaths}</span
               >
             </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Yearly trend text box overlay -->
+        <div class="yearly-trend-textbox-overlay">
+          <div class="video-narrative-text">
+            <h3>İntihar vakaları katlanarak artıyor</h3>
+            <p>
+              2023'te de intihar girişimi sayısı 2022'ye kıyasla iki kattan
+              fazla artarak yediye çıktı. Bu girişimlerin dördü başarıya(!)
+              ulaştı ve intihara kalkışanlar yaşamını yitirdi. Üçünün akıbeti
+              hakkında ise bir açıklama yapılmadı.
+            </p>
+            <p>
+              Tarihler 2024'ü gösterdiğindeyse intihar girişimi sayısı bir
+              önceki yıla kıyasla yine yaklaşık iki kat arttı. O yıl toplam 13
+              intihar girişimi yaşandı ve bu girişimlerin dokuzu ölümle
+              sonuçlandı. Üç kişi ağır yaralanırken, bir kişinin durumu hakkında
+              ise bir bilgi paylaşılmadı.
+            </p>
           </div>
         </div>
       {/if}
@@ -877,26 +897,6 @@
             fırsat vermeden attı kendini raylara doğru. Önce trene çarptı,
             ardından da çarpmanın etkisiyle ileri savrularak trenin altında
             kaldı.
-          </p>
-        </div>
-      </section>
-
-      <!-- Scrolling text box for yearly trend (Step 6) -->
-      <section class="step yearly-trend-text">
-        <div class="video-narrative-text">
-          <h3>İntihar vakaları katlanarak artıyor</h3>
-          <p>
-            2023'te de intihar girişimi sayısı 2022'ye kıyasla iki kattan fazla
-            artarak yediye çıktı. Bu girişimlerin dördü başarıya(!) ulaştı ve
-            intihara kalkışanlar yaşamını yitirdi. Üçünün akıbeti hakkında ise
-            bir açıklama yapılmadı.
-          </p>
-          <p>
-            Tarihler 2024'ü gösterdiğindeyse intihar girişimi sayısı bir önceki
-            yıla kıyasla yine yaklaşık iki kat arttı. O yıl toplam 13 intihar
-            girişimi yaşandı ve bu girişimlerin dokuzu ölümle sonuçlandı. Üç
-            kişi ağır yaralanırken, bir kişinin durumu hakkında ise bir bilgi
-            paylaşılmadı.
           </p>
         </div>
       </section>
@@ -1797,9 +1797,62 @@
     max-width: none !important;
   }
 
-  /* Slightly reduce opacity to match desired look */
-  .yearly-trend-text .video-narrative-text {
-    background: rgba(255, 255, 255, 0.9);
+  /* Yearly trend textbox overlay styling */
+  .yearly-trend-textbox-overlay {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-50%);
+    z-index: 1000;
+    max-width: 500px;
+
+    .video-narrative-text {
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(220, 38, 38, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      position: relative;
+
+      /* Add subtle inner glow */
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 16px;
+        background: linear-gradient(
+          135deg,
+          rgba(220, 38, 38, 0.05) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+      }
+
+      h3 {
+        color: #dc2626;
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        text-align: center;
+        border-bottom: 2px solid rgba(220, 38, 38, 0.1);
+        padding-bottom: 0.75rem;
+      }
+
+      p {
+        color: #1f2937;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+        text-align: left;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 
   /* Simple flow-based positioning */
@@ -2630,6 +2683,31 @@
         line-height: 1.6;
       }
     }
+
+    /* Mobile adjustments for yearly trend textbox overlay */
+    .yearly-trend-textbox-overlay {
+      position: relative;
+      top: auto;
+      right: auto;
+      transform: none;
+      margin: 1rem auto;
+      max-width: 95%;
+
+      .video-narrative-text {
+        padding: 1.5rem;
+
+        h3 {
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin-bottom: 1rem;
+        }
+      }
+    }
   }
 
   @media (max-width: 480px) {
@@ -2647,6 +2725,26 @@
       p {
         font-size: 0.95rem;
         line-height: 1.5;
+      }
+    }
+
+    /* Extra small screen adjustments for yearly trend textbox overlay */
+    .yearly-trend-textbox-overlay {
+      margin: 0.75rem auto;
+
+      .video-narrative-text {
+        padding: 1.25rem;
+
+        h3 {
+          font-size: 1.2rem;
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: 0.9rem;
+          line-height: 1.4;
+          margin-bottom: 0.75rem;
+        }
       }
     }
   }
