@@ -1,0 +1,82 @@
+---
+title: Positioning Text with Images
+slug: developers/text-image-layout
+sidebar:
+  order: 32
+---
+
+import { FileTree } from '@astrojs/starlight/components';
+
+## Positioning Text on the Left Side of an Image
+
+To position text on the left side of an image, you can use CSS flexbox or grid layouts. Here are examples of both approaches:
+
+### Using Flexbox
+
+```html
+<div style="display: flex; align-items: center; gap: 2rem;">
+  <div style="flex: 1;">
+    <p>Your text content goes here. This text will appear on the left side of the image.</p>
+  </div>
+  <div style="flex: 1;">
+    <img src="/bluprint_graphics-kit/assets/hero.png" alt="Description of image" style="width: 100%; height: auto;" />
+  </div>
+</div>
+```
+
+### Using CSS Grid
+
+```html
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+  <div>
+    <p>Your text content goes here. This text will appear on the left side of the image.</p>
+  </div>
+  <div>
+    <img src="/bluprint_graphics-kit/assets/hero.png" alt="Description of image" style="width: 100%; height: auto;" />
+  </div>
+</div>
+```
+
+### Responsive Considerations
+
+For mobile devices, you might want to stack the text and image vertically:
+
+```html
+<div style="display: flex; flex-direction: column; gap: 2rem;">
+  <div>
+    <p>Your text content goes here.</p>
+  </div>
+  <div>
+    <img src="/bluprint_graphics-kit/assets/hero.png" alt="Description of image" style="width: 100%; height: auto;" />
+  </div>
+</div>
+
+<style>
+  @media (min-width: 768px) {
+    div {
+      flex-direction: row;
+    }
+  }
+</style>
+```
+
+## Adding Images to Your Project
+
+Place your images in the `src/statics/images` directory:
+
+<FileTree>
+- src
+  - statics
+    - images
+      - **your-image.png**
+</FileTree>
+
+Then reference them in your components:
+
+```svelte
+<script>
+  import { assets } from '$app/paths';
+</script>
+
+<img src="{assets}/images/your-image.png" alt="Description" />
+```

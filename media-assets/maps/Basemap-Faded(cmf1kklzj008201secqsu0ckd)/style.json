@@ -1,0 +1,251 @@
+{
+    "version": 8,
+    "name": "Basemap - Faded",
+    "metadata": {
+        "mapbox:autocomposite": true,
+        "mapbox:thumb": "data:image/webp;base64,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",
+        "mapbox:uiParadigm": "layers",
+        "mapbox:sdk-support": {
+            "js": "3.14.0",
+            "android": "11.14.0",
+            "ios": "11.14.0"
+        },
+        "mapbox:groups": {
+            "a4922d9c6653a9d7641d268db8147f47": {
+                "name": "Landuse",
+                "collapsed": true
+            }
+        },
+        "mapbox:uiExpandedImports": ["basemap"]
+    },
+    "center": [-34, 38],
+    "zoom": 2,
+    "lights": [],
+    "terrain": null,
+    "imports": [
+        {
+            "id": "basemap",
+            "url": "mapbox://styles/mapbox/standard",
+            "config": {
+                "colorTrunks": "rgba(163, 166, 194, 0)",
+                "show3dObjects": false,
+                "colorGreenspace": "hsl(83, 29%, 88%)",
+                "showPlaceLabels": false,
+                "theme": "faded",
+                "colorRoads": "rgba(191, 198, 217, 0)",
+                "showPointOfInterestLabels": false,
+                "colorWater": "#384a61",
+                "lightPreset": "day",
+                "showTransitLabels": false,
+                "colorMotorways": "rgba(161, 176, 196, 0)",
+                "showAdminBoundaries": false,
+                "showPedestrianRoads": false,
+                "showRoadLabels": false
+            }
+        }
+    ],
+    "sources": {
+        "mapbox://mapbox.mapbox-terrain-dem-v1": {
+            "url": "mapbox://mapbox.mapbox-terrain-dem-v1",
+            "type": "raster-dem",
+            "tileSize": 256
+        },
+        "mapbox://anilbasat.aks76fed": {
+            "url": "mapbox://anilbasat.aks76fed",
+            "type": "raster",
+            "tileSize": 256
+        },
+        "composite": {
+            "url": "mapbox://mapbox.mapbox-bathymetry-v2,mapbox.mapbox-streets-v8,mapbox.mapbox-terrain-v2",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/scrolli/cmf1kklzj008201secqsu0ckd/b8fjw435hx85pp7j172f016pl",
+    "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+    "projection": {"name": "mercator"},
+    "layers": [
+        {
+            "id": "anilbasat-aks76fed",
+            "type": "raster",
+            "source": "mapbox://anilbasat.aks76fed",
+            "slot": "",
+            "layout": {"visibility": "none"},
+            "paint": {}
+        },
+        {
+            "id": "background",
+            "type": "background",
+            "slot": "",
+            "paint": {"background-color": "#e2e9d8"}
+        },
+        {
+            "id": "natural-label",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "natural_label",
+            "slot": "",
+            "paint": {"line-color": "#e2e9d8"}
+        },
+        {
+            "id": "landuse",
+            "type": "fill",
+            "metadata": {"mapbox:group": "a4922d9c6653a9d7641d268db8147f47"},
+            "source": "composite",
+            "source-layer": "landuse",
+            "slot": "",
+            "layout": {"visibility": "none"},
+            "paint": {"fill-color": "#e2e9d8"}
+        },
+        {
+            "id": "landuse (1)",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "landuse",
+            "slot": "",
+            "filter": [
+                "match",
+                ["get", "class"],
+                [
+                    "sand",
+                    "rock",
+                    "grass",
+                    "aboriginal_lands",
+                    "wood",
+                    "glacier",
+                    "scrub",
+                    "agriculture",
+                    "cemetery",
+                    "school",
+                    "parking",
+                    "industrial",
+                    "hospital",
+                    "pitch",
+                    "commercial_area",
+                    "facility",
+                    "residential",
+                    "park",
+                    "airport",
+                    "piste"
+                ],
+                true,
+                false
+            ],
+            "paint": {"fill-color": "#e2e9d8"}
+        },
+        {
+            "id": "landuse-overlay",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "landuse_overlay",
+            "slot": "",
+            "filter": [
+                "all",
+                [
+                    "match",
+                    ["get", "type"],
+                    [
+                        "swamp",
+                        "peat_bog",
+                        "palsa_bog",
+                        "nature_reserve",
+                        "saltern",
+                        "string_bog",
+                        "tundra_pond",
+                        "reedbed",
+                        "fen",
+                        "wetland",
+                        "reed",
+                        "marsh",
+                        "raised_bog",
+                        "tidalflat",
+                        "reef",
+                        "national_park",
+                        "basin",
+                        "mangrove",
+                        "bog",
+                        "wet_meadow",
+                        "mud",
+                        "saltmarsh",
+                        "protected_area"
+                    ],
+                    true,
+                    false
+                ],
+                [
+                    "match",
+                    ["get", "class"],
+                    ["national_park", "wetland", "wetland_noveg"],
+                    true,
+                    false
+                ]
+            ],
+            "paint": {"fill-color": "#e2e9d8"}
+        },
+        {
+            "id": "contour",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "contour",
+            "slot": "",
+            "paint": {"fill-color": "#e2e9d8"}
+        },
+        {
+            "id": "hillshade",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "hillshade",
+            "slot": "",
+            "paint": {"fill-color": "#e2e9d8", "fill-opacity": 0.33}
+        },
+        {
+            "id": "landcover",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "landcover",
+            "slot": "",
+            "filter": [
+                "match",
+                ["get", "class"],
+                ["wood", "scrub", "grass", "crop", "snow"],
+                true,
+                false
+            ],
+            "paint": {"fill-color": "#e2e9d8", "fill-opacity": 0.33}
+        },
+        {
+            "id": "water",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "water",
+            "slot": "",
+            "paint": {"fill-color": "#374b66"}
+        },
+        {
+            "id": "depth",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "depth",
+            "slot": "",
+            "paint": {"fill-color": "rgba(20, 32, 46, 0.18)"}
+        },
+        {
+            "id": "mapbox-mapbox-terrain-dem-v1",
+            "type": "hillshade",
+            "source": "mapbox://mapbox.mapbox-terrain-dem-v1",
+            "slot": "",
+            "paint": {
+                "hillshade-highlight-color": "hsl(0, 0%, 100%)",
+                "hillshade-accent-color": "hsl(0, 0%, 0%)",
+                "hillshade-shadow-color": "hsl(0, 0%, 0%)",
+                "hillshade-exaggeration": 0.33
+            }
+        }
+    ],
+    "created": "2025-09-01T20:26:05.263Z",
+    "modified": "2025-09-01T20:51:10.761Z",
+    "id": "cmf1kklzj008201secqsu0ckd",
+    "owner": "scrolli",
+    "visibility": "public",
+    "protected": false,
+    "draft": false
+}

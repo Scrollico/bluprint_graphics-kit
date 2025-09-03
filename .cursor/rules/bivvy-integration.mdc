@@ -1,0 +1,32 @@
+---
+alwaysApply: false
+---
+# Bivvy Integration
+
+This project uses Bivvy for managing features, bugs, tasks, and explorations.
+
+## Bivvy Workflow
+
+Bivvy provides a structured approach for:
+
+1. **Creating** new pitches for features, bugs, tasks, or explorations
+2. **Working on** active pitches with proper tracking
+3. **Closing** completed pitches with appropriate documentation
+
+## Usage Guidelines
+
+When working with Bivvy:
+
+1. Ensure proper categorization of work items (feature, bug, task, exploration)
+2. Document progress in the Memory Bank, particularly in activeContext.md
+3. Update progress.md when significant milestones are reached
+4. Reference Bivvy pitches in commit messages and documentation for traceability
+
+## Integration with Memory Bank
+
+When working on a Bivvy pitch:
+
+1. Document the pitch details in activeContext.md
+2. Track progress in progress.md
+3. Update relevant technical documentation in systemPatterns.md and techContext.md
+4. Once completed, move from activeContext.md to a record of completion in progress.md

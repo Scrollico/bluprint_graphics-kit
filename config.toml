@@ -1,0 +1,63 @@
+[mcp_servers.browsermcp]
+command = "npx"
+args = ["@browsermcp/mcp@latest", "start"]
+
+# Codex CLI Configuration
+# This file configures the Codex CLI tool for AI-powered code assistance
+
+[codex]
+# Your Codex API key (required)
+# Get this from https://codex.anthropic.com/
+api_key = ""
+
+# Model to use for code generation and assistance
+# Options: claude-3-5-sonnet, claude-3-opus, claude-3-sonnet, claude-3-haiku
+model = "claude-3-5-sonnet"
+
+# Temperature for generation (0.0 = deterministic, 1.0 = creative)
+temperature = 0.1
+
+# Maximum tokens for responses
+max_tokens = 4000
+
+# Context window size
+context_window = 200000
+
+# Default language for code generation
+language = "typescript"
+
+# Project-specific settings
+[codex.project]
+# Project type
+type = "sveltekit"
+
+# Framework-specific configurations
+framework = "sveltekit"
+version = "2.0"
+
+# Code style preferences
+[codex.style]
+# Indentation style
+indent = "  "
+
+# Quote style preference
+quotes = "single"
+
+# Semicolon usage
+semicolons = true
+
+# Line length limit
+max_line_length = 100
+
+# File organization preferences
+[codex.organization]
+# Component structure
+components_dir = "src/lib/components"
+pages_dir = "pages"
+styles_dir = "src/lib/styles"
+utils_dir = "src/utils"
+
+# Naming conventions
+component_prefix = ""
+file_naming = "kebab-case"
+component_naming = "PascalCase"

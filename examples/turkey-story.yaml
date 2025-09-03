@@ -1,0 +1,74 @@
+# Example Story: Turkey Map with Istanbul Zoom
+# This demonstrates the exact scenario you mentioned
+
+meta:
+  title: "Regional Analysis of Turkey"
+  description: "Understanding geographic patterns across Turkey with focus on Istanbul"
+  authors: ["Your Name"]
+  section: "Graphics"
+  publishDate: "2025-08-25"
+
+layout:
+  type: "two-column"
+  sticky: "graphic"
+  graphicPosition: "left"
+
+steps:
+  - id: "1.0"
+    type: "intro"
+    content:
+      headline: "Turkey Regional Analysis"
+      text: "Let's explore the geographic distribution of data across Turkey's regions."
+    layout:
+      spacing: "normal"
+
+  - id: "2.1"
+    type: "chart"
+    content:
+      text: "Here's the overall view of Turkey showing regional data patterns across all provinces."
+    visual:
+      component: "TurkeyMapChart"
+      data: "turkey.json"
+      props:
+        width: 800
+        height: 600
+        colorScheme: "blues"
+    transition:
+      duration: 1200
+      ease: "cubicInOut"
+
+  - id: "2.2"
+    type: "map_action"
+    content:
+      text: "Now let's zoom into Istanbul to see the detailed breakdown of the metropolitan area."
+    visual:
+      component: "TurkeyMapChart" # Same component, different state
+      state:
+        zoom:
+          region: "istanbul"
+          coordinates: [28.9784, 41.0082]
+          level: 8
+    transition:
+      duration: 1500
+      ease: "ease-out"
+
+  - id: "3.1"
+    type: "data_update"
+    content:
+      text: "Istanbul shows distinct patterns compared to the national average."
+    visual:
+      component: "TurkeyMapChart"
+      state:
+        highlight:
+          regions: ["istanbul"]
+          intensity: 0.8
+        filter:
+          field: "region"
+          value: "istanbul"
+          operator: "equals"
+
+  - id: "4.0"
+    type: "conclusion"
+    content:
+      headline: "Key Findings"
+      text: "The data reveals significant regional variations, with Istanbul showing unique characteristics."

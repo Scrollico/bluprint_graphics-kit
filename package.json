@@ -19,6 +19,8 @@
     "stories:connect": "npx rngs-io stories connect",
     "stories:autolink": "npx rngs-io stories autolink",
     "stories:live": "npx rngs-io stories live preview",
+    "story:add": "node scripts/create-scrollytelling-story.js",
+    "story:structured": "node scripts/create-structured-story.js",
     "get-google": "npx graphics google:get-docs google.json",
     "lock-google": "npx graphics google:lock-docs google.json",
     "publish:preview": "npx graphics-publisher preview",
@@ -53,6 +55,7 @@
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
     "@types/fs-extra": "^11.0.4",
     "@types/language-tags": "^1.0.4",
+    "@types/mapbox-gl": "^3.4.1",
     "@types/mock-fs": "^4.13.4",
     "astro": "^5.5.2",
     "autoprefixer": "^10.4.20",
@@ -100,12 +103,21 @@
     ]
   },
   "dependencies": {
+    "@fontsource/geist": "^5.2.6",
     "@reuters-graphics/graphics-components": "^3.0.14",
-    "language-tags": "^1.0.9"
+    "@types/d3": "^7.4.3",
+    "@types/three": "^0.179.0",
+    "d3": "^7.9.0",
+    "js-yaml": "^4.1.0",
+    "language-tags": "^1.0.9",
+    "layerchart": "^1.0.11",
+    "mapbox-gl": "^3.14.0",
+    "three": "^0.179.1"
   },
   "reuters": {
     "graphic": {},
     "preview": ""
   },
-  "homepage": ""
+  "homepage": "",
+  "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a"
 }

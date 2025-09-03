@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(vercel:*)",
+      "Bash(pnpm run:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx vercel:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "mcp__sequential-thinking__sequentialthinking",
+      "Bash(chmod:*)",
+      "Bash(./compile.js)",
+      "Bash(pnpm start:*)",
+      "Bash(npm start)",
+      "allow everything"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

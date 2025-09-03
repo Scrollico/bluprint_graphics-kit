@@ -1,0 +1,41 @@
+{
+  "sales_data": [
+    {"time": "2025-01", "value": 512},
+    {"time": "2025-02", "value": 1024},
+    {"time": "2025-03", "value": 756},
+    {"time": "2025-04", "value": 892},
+    {"time": "2025-05", "value": 1200},
+    {"time": "2025-06", "value": 950}
+  ],
+  "market_share": [
+    {"category": "Desktop", "value": 45},
+    {"category": "Mobile", "value": 35},
+    {"category": "Tablet", "value": 20}
+  ],
+  "performance_metrics": [
+    {"dimension": "Speed", "value": 85},
+    {"dimension": "Quality", "value": 92},
+    {"dimension": "Cost", "value": 78},
+    {"dimension": "Reliability", "value": 88},
+    {"dimension": "Support", "value": 76}
+  ],
+  "conversion_funnel": [
+    {"stage": "Visitors", "value": 10000},
+    {"stage": "Sign-ups", "value": 2500},
+    {"stage": "Trials", "value": 1200},
+    {"stage": "Purchases", "value": 450}
+  ],
+  "user_distribution": [
+    {"range": "18-25", "count": 45},
+    {"range": "26-35", "count": 78},
+    {"range": "36-45", "count": 65},
+    {"range": "46-55", "count": 34},
+    {"range": "56-65", "count": 12}
+  ],
+  "quarterly_comparison": [
+    {"quarter": "Q1", "revenue": 125000, "expenses": 95000},
+    {"quarter": "Q2", "revenue": 140000, "expenses": 105000},
+    {"quarter": "Q3", "revenue": 135000, "expenses": 98000},
+    {"quarter": "Q4", "revenue": 160000, "expenses": 115000}
+  ]
+}

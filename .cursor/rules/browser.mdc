@@ -1,0 +1,7 @@
+---
+description: when i write "mcp" in the message, alwas run browsermcp
+alwaysApply: false
+---
+-Always run browser mcp tool before coding anything, and always run after you've done with your task.
+-browser_screenshot: it takes screenshot of the page
+i don't like stupid work always double check what you did, how it looks like.

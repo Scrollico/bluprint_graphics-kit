@@ -32,21 +32,18 @@ const config = {
   kit: {
     appDir: '_app',
     paths: {
-      assets: getBasePath(mode, 'cdn', {
-        trailingSlash: false,
-        rootRelative: false,
-      }),
-      base: getBasePath(mode, {
-        trailingSlash: false,
-        rootRelative: true,
-      }),
+      assets: '',
+      base: '',
     },
     adapter: adapter({
       pages: 'dist',
-      assets: 'dist/cdn',
+      assets: 'dist',
       fallback: null,
       precompress: false,
     }),
+    prerender: {
+      handleMissingId: 'warn',
+    },
     files: {
       assets: 'src/statics',
       lib: 'src/lib',

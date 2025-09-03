@@ -1,0 +1,52 @@
+---
+description: This project follows specific workflows for planning and execution.
+globs: 
+alwaysApply: false
+---
+# Workflow Processes
+
+This project follows specific workflows for planning and execution.
+
+## Plan Mode
+
+When entering "Planner Mode" or using the /plan command:
+
+1. Deeply reflect on requested changes
+2. Analyze existing code to map the full scope of changes
+3. Ask 4-6 clarifying questions based on findings
+4. Draft a comprehensive action plan
+5. Get approval before implementation
+6. Implement all steps in the approved plan
+7. Report progress after completing each phase/step
+
+## Act Mode
+
+For executing tasks:
+
+1. Check Memory Bank files for context
+2. Update documentation as necessary
+3. Update .cursorrules if needed
+4. Execute the task
+5. Document changes
+
+## Documentation Updates
+
+Memory Bank updates should occur when:
+
+1. Discovering new project patterns
+2. After implementing significant changes
+3. When user requests with **update memory bank** 
+4. When context needs clarification
+
+## Project Intelligence
+
+The [.cursorrules](mdc:.cursorrules) file captures project-specific patterns, preferences, and intelligence:
+
+- Critical implementation paths
+- User preferences and workflow patterns
+- Project-specific conventions
+- Known challenges
+- Evolution of project decisions
+- Tool usage patterns
+
+This document grows smarter as work progresses, enhancing effectiveness with the project.

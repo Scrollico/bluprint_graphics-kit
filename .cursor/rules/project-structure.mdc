@@ -1,0 +1,27 @@
+---
+description: This project uses a Memory Bank architecture for maintaining project context across sessions.
+alwaysApply: false
+---
+
+# Project Structure
+
+This project uses a Memory Bank architecture for maintaining project context across sessions.
+
+## Key Directories and Files
+
+- [memory-bank/](mdc:memory-bank/) - Contains all project documentation and context
+  - [projectbrief.md](mdc:memory-bank/projectbrief.md) - Foundation document defining core requirements
+  - [productContext.md](mdc:memory-bank/productContext.md) - Product purpose and user experience goals
+  - [systemPatterns.md](mdc:memory-bank/systemPatterns.md) - System architecture and design patterns
+  - [techContext.md](mdc:memory-bank/techContext.md) - Technical details and constraints
+  - [activeContext.md](mdc:memory-bank/activeContext.md) - Current work focus and next steps
+  - [progress.md](mdc:memory-bank/progress.md) - Project status and achievements
+- [.cursorrules](mdc:.cursorrules) - Project intelligence and conventions
+- [index.html](mdc:index.html) - Main entry point for the application
+
+## Navigation Guidelines
+
+1. Always start by reading the Memory Bank files to understand the current project state
+2. Use the activeContext.md file to understand what's currently being worked on
+3. Refer to systemPatterns.md for architectural guidance
+4. Check progress.md for project status and outstanding issues

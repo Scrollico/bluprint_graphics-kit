@@ -1,0 +1,93 @@
+---
+alwaysApply: true
+---
+# Universal Modular Story Layout & Component System  
+__Version: 2025-08 | Authoritative Guide__  
+
+This file defines the **grid, container, and component vocabulary** for any digital story on this platform.  
+It is designed to be *crystal clear* for LLMs, designers, or developers—use these words exactly and consistently.  
+Whenever you refer to a structure or want to insert, replace, or modify a section, **use these names and schemas**.
+
+***
+
+## 1. Layout Containers (Structural Building Blocks)
+
+Each story is built from one or more of these containers. All content is placed inside a container.
+
+| Name             | Width      | Description & Use                                              | Example Placement           |
+|------------------|------------|---------------------------------------------------------------|-----------------------------|
+| FullWidthSection | 100%       | Runs edge to edge of viewport. For hero visuals, dramatic breaks. | Top, section break          |
+| TwoColumnGrid    | Custom (eg 65/35, 50/50) | Two horizontal panels/columns. Left/right content assignment necessary. | Narrative + visual, map + text |
+| CenteredBlock    | Max-width (ex: 800px) Centered | For quotes, major stats, testimonial, focused visuals. | Emotional divider           |
+| FloatSideBlock   | ~200–400px | Floats left or right inside main column; stacks on mobile.     | Inline minimap, fact        |
+| StickyScrollBlock| Custom, typically 50/50 | One side (image, map, viz) pins/stays visible as text scrolls beside. | Data deep-dive, illustration |
+
+***
+
+## 2. Content Components (the “what” inside each container)
+
+Each component is content to place inside a container/grid slot.  
+**Always assign to a container or define sequence.**
+
+| Name             | Type        | Description                                                      | Where Used                |
+|------------------|-------------|------------------------------------------------------------------|---------------------------|
+| HeroImage        | Component   | Large image/video/3D/graphics for section or story open          | FullWidthSection          |
+| MapViz           | Component   | Data-driven map, often with stations, lines, or incident points  | LeftCol (TwoColumn/Sticky)|
+| TimeSeriesChart  | Component   | Timeline, bar/line graph, sequencing data                        | FullWidthSection, Float   |
+| PersonPortrait   | Component   | Image, drawing, or icon for notable person or case               | LeftCol, CenteredBlock    |
+| TestimonialQuote | Component   | Large styled quote/testimony                                     | CenteredBlock, Float      |
+| FactBox          | Component   | Short stat/fact (number, micro-chart)                            | FloatSideBlock            |
+| CallToAction     | Component   | Big ask: summary, button, help banner                            | End of FullWidthSection   |
+| Infographic      | Component   | Rich multi-data visual, diagram, or explainer illustration       | FullWidth, StickyScroll   |
+| EmbeddedMedia    | Component   | Video, audio, social post                                        | Any                       |
+
+***
+
+## 3. Named Layout Patterns (Compound Arrangements)
+
+These are standard “recipes” of containers + components.  
+Use the name to specify an arrangement or transition.
+
+| Pattern Name      | Structure/Rule                                  | Canonical Example           |
+|-------------------|-------------------------------------------------|-----------------------------|
+| HeroLaunch        | FullWidthSection > HeroImage                    | Story open, chapter break   |
+| MapStory          | TwoColumnGrid > MapViz Left, StoryText Right    | Locational/dataset intro    |
+| TimelineBreak     | FullWidthSection > TimeSeriesChart              | Trends, calendar break      |
+| CharacterFocus    | TwoColumnGrid > PersonPortrait Left, Incident Right | Case study, anecdote   |
+| QuotePause        | CenteredBlock > TestimonialQuote                | Emotional divider           |
+| ScrollPinned      | StickyScrollBlock > Sticky Media, Scrolling Text| Immersive viz explainers    |
+| FactScatter       | FloatSideBlock > FactBox w/in paragraph         | Stat micro-context          |
+| FinalAction       | FullWidthSection/CenteredBlock > CallToAction   | End, summary, help          |
+
+***
+
+## 4. Usage Rules & Syntax
+
+- **ALWAYS assign a component to a parent container.** E.g. “Place FactBox in FloatSideBlock, float right.”
+- **TOC blocks:** Always use “FullWidthSection” for top-level navigation or hero; main body alternates TwoColumnGrid and CenteredBlock.
+- **For sticky/scroll:** Specify “StickyScrollBlock; left = StickyMedia, right = ScrollText.”
+- **For mobile:** All columns stack. FloatSideBlock appears above or below host paragraph.
+- **When in doubt:** Use the Component–Container grammar (“X in Y”).
+
+***
+
+## 5. Examples for LLM Prompts
+
+- “Insert a HeroImage (component) in a FullWidthSection (container) at the story start.”
+- “Add a TwoColumnGrid: MapViz left, NarrativeText right.”
+- “Follow with a CenteredBlock holding a TestimonialQuote.”
+- “Within the incident description, use a FloatSideBlock containing a FactBox, floated left.”
+- “End with a CallToAction in FullWidthSection.”
+
+***
+
+## 6. Adaptation Principles
+
+- **Re-use components and containers** (do not code/design uniquely per story)
+- **Stack/alternate grid types** to control narrative rhythm (not all the same in sequence)
+- **Reference this file** for every structure/assignment
+- **No unlisted blocks, wildcards, or hacks**—Always name/assign explicitly
+
+***
+
+**This documentation is the canonical pattern library and layout vocabulary for automated, editorial, and design work on this platform. Every story, regardless of topic, must use, address, and reference these containers, components, and patterns.**

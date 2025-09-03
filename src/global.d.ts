@@ -50,3 +50,14 @@ declare module '$pkg' {
     };
   };
 }
+
+declare module '*.md?raw' {
+  const content: string;
+  export default content;
+}
+
+// Add GeoJSON module declaration
+declare module '*.geojson' {
+  const value: any;
+  export default value;
+}

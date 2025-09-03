@@ -1,0 +1,210 @@
+# Bluprint Graphics Kit - Project Intelligence
+
+## Project Overview
+
+This is a Reuters-style graphics and newsapps rig built with SvelteKit, designed for creating interactive data stories and scrollytelling experiences.
+
+## Key Patterns and Conventions
+
+### Component Architecture
+
+- Always use the Container-Component pattern: assign components to parent containers
+- Use named layout patterns: FullWidthSection, TwoColumnGrid, CenteredBlock, etc.
+- Follow the Reuters Graphics component library patterns
+- Components should be reusable and configurable
+
+### Scrollytelling Framework
+
+- Use Scrollama for scroll-driven interactions
+- Each narrative step is a `<section class="step">`
+- Steps trigger visual state changes with smooth transitions
+- Mobile-first responsive design
+
+### Data Visualization
+
+- Use D3.js for charts and maps
+- Support GeoJSON for geographic data
+- Implement smooth animations and transitions
+- Optimize for performance with large datasets
+
+### Styling Conventions
+
+- Use SCSS with responsive design patterns
+- Mobile-first approach with breakpoints
+- Follow Reuters design standards
+- Ensure accessibility compliance
+
+### File Organization
+
+- Story pages in `pages/` directory
+- Components in `src/lib/components/`
+- Data files in `src/lib/data/`
+- Styles in `src/lib/styles/`
+- Utilities in `src/utils/`
+
+## Development Workflow
+
+### Starting Development
+
+1. Always read the Memory Bank files first
+2. Use `pnpm start` for local development
+3. Follow the scrollytelling patterns established
+4. Test on mobile devices regularly
+
+### Component Development
+
+1. Create reusable components in `src/lib/components/`
+2. Use TypeScript for type safety
+3. Follow the established naming conventions
+4. Document component props and usage
+
+### Story Creation
+
+1. Use `pnpm story:add` for new stories
+2. Follow the established narrative structure
+3. Implement proper scroll-driven interactions
+4. Test across different devices and browsers
+
+## Key Learnings
+
+### Performance
+
+- Optimize images and videos for web
+- Use lazy loading for heavy components
+- Minimize bundle size with code splitting
+- Monitor Core Web Vitals
+
+### Accessibility
+
+- Implement proper ARIA labels
+- Ensure keyboard navigation
+- Support screen readers
+- Follow WCAG guidelines
+
+### User Experience
+
+- Smooth scroll interactions
+- Clear visual hierarchy
+- Intuitive navigation
+- Fast loading times
+
+## Common Issues and Solutions
+
+### Scroll Performance
+
+- Use `requestAnimationFrame` for smooth animations
+- Optimize DOM manipulations
+- Use CSS transforms instead of layout changes
+
+### Mobile Optimization
+
+- Test touch interactions thoroughly
+- Optimize for mobile performance
+- Ensure proper viewport settings
+- Test on various mobile devices
+
+### Data Loading
+
+- Implement proper loading states
+- Use progressive loading for large datasets
+- Optimize data processing
+- Cache data when appropriate
+
+## Project-Specific Patterns
+
+### Marmaray Story
+
+- Content warning prominently displayed
+- Left-aligned text for better readability
+- Sensitive content handled appropriately
+- Turkish language support
+
+### Map Visualizations
+
+- Use D3.js for custom map interactions
+- Support Mapbox GL for complex maps
+- Implement smooth zoom and pan
+- Optimize for mobile performance
+
+### Chart Components
+
+- Reusable chart components
+- Configurable color schemes
+- Responsive design
+- Accessibility features
+
+## Tools and Commands
+
+### Development
+
+- `pnpm start` - Start development server
+- `pnpm build` - Build for production
+- `pnpm test` - Run tests
+- `pnpm lint` - Lint code
+- `pnpm format` - Format code
+
+### Story Management
+
+- `pnpm story:add` - Add new story
+- `pnpm stories:sync` - Sync with RNGs-IO
+- `pnpm preview` - Build preview
+- `pnpm pub` - Publish story
+
+### Asset Management
+
+- `pnpm savile` - Process images
+- FFmpeg for video processing
+- Optimize 3D models for web
+
+## Quality Standards
+
+### Code Quality
+
+- TypeScript for type safety
+- ESLint for code quality
+- Prettier for formatting
+- Comprehensive documentation
+
+### Performance Standards
+
+- Core Web Vitals compliance
+- Fast loading times
+- Smooth interactions
+- Mobile optimization
+
+### Accessibility Standards
+
+- WCAG AA compliance
+- Screen reader support
+- Keyboard navigation
+- Color contrast compliance
+
+## Future Considerations
+
+### Scalability
+
+- Component library expansion
+- Story templates
+- Performance monitoring
+- Analytics integration
+
+### Maintenance
+
+- Regular dependency updates
+- Performance audits
+- Accessibility reviews
+- Documentation updates
+
+### Innovation
+
+- Advanced visualization features
+- Real-time data integration
+- VR/AR support
+- AI-powered insights
+
+
+
+
+
+
+

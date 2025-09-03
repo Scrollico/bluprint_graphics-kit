@@ -1,0 +1,368 @@
+---
+
+description: Step structure and creation guide for scrollytelling stories
+alwaysApply: false
+---
+# Step Structure & Creation Guide
+
+## Overview
+
+This document defines the step naming convention, content structure, and creation process for scrollytelling stories in the Scrolli platform.
+
+## Step Naming Convention
+
+### **Step Numbering Rules**
+
+- **Step X**: Single step with rich content and/or text
+- **Step X.Y**: Sub-steps within Step X (multiple related steps)
+- **Use single number** when it's a standalone step
+- **Use X.Y format** when there are multiple related sub-steps
+
+### **Content Structure**
+
+- **Step X**: Can contain rich content (maps, 3D, images, videos) AND text
+- **Step X.Y**: Sub-steps that build upon Step X's content
+- **Progressive storytelling**: Each Y adds more context/explanation
+
+### **Example Structure**
+
+```
+Step 1: Warning (current)
+Step 2: Map visualization + explanatory text
+Step 2.1: Same map + additional context text
+Step 2.2: Same map + more detailed explanation
+Step 3: 3D visualization + story text
+Step 3.1: Same 3D + enhanced narrative
+```
+
+## Step Creation Process
+
+### **When Creating a New Step, Provide:**
+
+1. **Step Description**: What this step is about
+2. **Step Text**: The actual content to display
+3. **Context**: Which rich content to use (map, 3D, image, video, etc.)
+
+### **Template for Step Creation**
+
+```
+Step: [Step Number]
+Description: [Brief description of what this step contains]
+Text: [The actual text content to display]
+Context: [Rich content to use - map, 3D, image, video, etc.]
+```
+
+### **Implementation Guidelines**
+
+#### **For Single Steps (Step X)**
+
+- Create new rich content if needed
+- Add explanatory text
+- Set up proper scroll triggers
+- Ensure smooth transitions
+
+#### **For Sub-Steps (Step X.Y)**
+
+- Reuse rich content from parent Step X
+- Add new text content
+- Maintain smooth scrollytelling transitions
+- Build upon existing narrative
+
+#### **Rich Content Types**
+
+- **Maps**: Interactive geographic visualizations
+- **3D Models**: Three-dimensional objects/scenes
+- **Images**: Static or animated images
+- **Videos**: Video content with scroll controls
+- **Charts**: Data visualizations
+- **Combinations**: Multiple rich content types
+
+#### **Text Content Guidelines**
+
+- **Concise**: Keep text brief and impactful
+- **Contextual**: Text should relate to rich content
+- **Progressive**: Each sub-step adds new information
+- **Accessible**: Clear, readable typography
+
+## Technical Implementation
+
+### **File Structure**
+
+```
+pages/marmaray/+page.svelte
+├── Step 1: Warning
+├── Step 2: [Rich Content + Text]
+├── Step 2.1: [Same Rich Content + Additional Text]
+├── Step 2.2: [Same Rich Content + More Text]
+└── Step 3: [New Rich Content + Text]
+```
+
+### **Component Structure**
+
+```svelte
+<section class="step-section step-{number}">
+  <div class="content-wrapper">
+    <!-- Rich Content (maps, 3D, etc.) -->
+    <div class="rich-content">
+      <!-- Component goes here -->
+    </div>
+
+    <!-- Text Content -->
+    <div class="text-content">
+      <!-- Step text goes here -->
+    </div>
+  </div>
+</section>
+```
+
+### **Scroll Management**
+
+- Use scroll triggers for step transitions
+- Maintain smooth animations between steps
+- Handle rich content state changes
+- Ensure responsive behavior
+
+## Usage Examples
+
+### **Example 1: Single Step**
+
+```
+Step: 2
+Description: European map showing suicide statistics
+Text: "The data reveals concerning patterns across Europe..."
+Context: European map visualization with country highlighting
+```
+
+### **Example 2: Sub-Step**
+
+```
+Step: 2.1
+Description: Focus on Germany with additional context
+Text: "Germany shows particularly high rates in urban areas..."
+Context: Same European map, highlight Germany, zoom in
+```
+
+### **Example 3: Rich Content + Text**
+
+```
+Step: 3
+Description: 3D visualization of Marmaray station
+Text: "The station's design reflects modern urban planning..."
+Context: 3D model of Marmaray station with interactive elements
+```
+
+## Best Practices
+
+### **Content Organization**
+
+- Keep related steps together (X, X.1, X.2)
+- Maintain narrative flow between steps
+- Use consistent styling and typography
+- Ensure accessibility standards
+
+### **Performance**
+
+- Optimize rich content loading
+- Use lazy loading for heavy assets
+- Maintain smooth scroll performance
+- Test on various devices
+
+### **User Experience**
+
+- Clear step progression
+- Intuitive navigation
+- Responsive design
+- Loading states for rich content
+
+## Quick Reference
+
+### **Step Types**
+
+- **Single Step**: Step X (standalone)
+- **Sub-Step**: Step X.Y (related to Step X)
+- **Rich Content**: Maps, 3D, images, videos
+- **Text Content**: Explanatory narrative
+
+### **Creation Process**
+
+1. Define step number and type
+2. Provide description and text
+3. Specify rich content context
+4. Implement with proper transitions
+5. Test scroll behavior
+
+### **File Locations**
+
+- **Main Story**: `pages/marmaray/+page.svelte`
+- **Components**: `src/lib/components/`
+- **Assets**: `media-assets/`
+- **Styles**: `src/lib/styles/`
+
+## 🔥 SCROLLYTELLING DEBUG MASTERCLASS
+### Problem Solving Pattern for Bidirectional Scroll Issues
+
+Bu bölüm gerçek bir problem-solving case study'sidir. Marmaray sayfasında yaşadığımız **bidirectional scrollytelling** problemini nasıl çözdüğümüzü adım adım anlattım. Bu pattern'i her scrollytelling bug'ında kullanabilirsin!
+
+### **🎯 Problem Tanımı**
+```
+SORUN: Map görünüyor ama scroll yukarı çıkınca ikinci text box'a gelmiyor, 
+       direkt ilk text box'a atlıyor. Scroll aşağı-yukarı tutarlı olmuyor.
+
+BEKLENEN: Scroll up/down her iki yönde de aynı intermediate step'leri göstermeli
+```
+
+### **🕵️ Sistematik Debug Yaklaşımı**
+
+#### **ADIM 1: Mevcut Durumu Analiz Et**
+```javascript
+// Debug HUD'da şunları kontrol et:
+- currentStep: hangi step'te olduğun
+- showMap: map'in görünür olup olmadığı  
+- forceMapShow: viewport-based forcing aktif mi
+- scrollingUp: scroll yönü doğru tespit ediliyor mu
+```
+
+#### **ADIM 2: Scroll Direction Detection'ı İncele**
+```javascript
+// Scroll direction logic'i kontrol et:
+let scrollingUp = false;
+function throttledScrollHandler() {
+  const y = window.scrollY || window.pageYOffset || 0;
+  scrollingUp = y < lastScrollY;  // ✅ Bu kısım doğru çalışıyor
+  lastScrollY = y;
+}
+```
+
+#### **ADIM 3: Map Visibility Logic'ini Analiz Et**
+```javascript
+// SORUN BURADA! Basit logic bidirectional scroll'u handle edemez:
+let showMap = $derived(
+  metroStepIndex >= 0 ?
+    currentStep <= metroStepIndex || forceMapShow
+  : currentStep <= 3
+);
+```
+
+#### **ADIM 4: Viewport-Based Force Show Logic'ini Geliştir**
+```javascript
+// ESKİ (PROBLEM): Sadece intersect'te göster
+forceMapShow = inView;
+
+// YENİ (ÇÖZÜM): Bidirectional approach detection
+const approachingFromBelow = scrollingUp && r.top < vh * 1.2;     // Early show when scrolling up
+const approachingFromAbove = !scrollingUp && r.bottom > vh * -0.2; // Extended show when scrolling down
+forceMapShow = inView || approachingFromBelow || approachingFromAbove;
+```
+
+#### **ADIM 5: CSS Transform Problemini Keşfet**
+```javascript
+// 🔍 GERÇEK PROBLEM BURADA SAKLIYDI!
+// showMap: true olmasına rağmen map görünmüyordu
+
+// SORUNLU KOD:
+style:transform={showMap ? mapExitTransform : 'translateY(-100vh)'}
+// mapExitTransform = `translateY(-${mapExitProgress * 100}vh)` 
+// Bu da map'i viewport'un üstüne çıkarıyordu!
+
+// ÇÖZÜM:
+style:transform={showMap ? 'translateY(0)' : 'translateY(-100vh)'}
+style:opacity={showMap ? 1 : 0}
+```
+
+### **💡 Debug Pattern - 5 Golden Rules**
+
+#### **Rule 1: Debug HUD is Your Best Friend**
+```javascript
+// Always add comprehensive debug info:
+{#if showHUD}
+  <div class="debug-hud">
+    <div>step: {currentStep}</div>
+    <div>metroStepIndex: {metroStepIndex}</div>
+    <div>scrollingUp: {scrollingUp ? '↑' : '↓'}</div>
+    <div>forceMapShow: {forceMapShow ? 'true' : 'false'}</div>
+    <div>showMap: {showMap ? 'true' : 'false'}</div>
+    <div>mapExitProgress: {mapExitProgress.toFixed(2)}</div>
+  </div>
+{/if}
+```
+
+#### **Rule 2: Logic vs Styling Separation**
+```
+❌ YANLIŞ: Logic doğru ama stil problemi var
+✅ DOĞRU: Her ikisini de ayrı ayrı test et
+
+1. Önce logic'i kontrol et (showMap true/false doğru mu?)
+2. Sonra styling'i kontrol et (CSS transform/opacity doğru mu?)
+```
+
+#### **Rule 3: Bidirectional Thinking**
+```javascript
+// Her scroll detection için iki yön düşün:
+const scrollDown_behavior = /* Aşağı scroll davranışı */;
+const scrollUp_behavior = /* Yukarı scroll davranışı */;
+
+// İkisi de aynı step'leri göstermeli!
+```
+
+#### **Rule 4: Viewport Thresholds**
+```javascript
+// Smooth transitions için threshold'ları genişlet:
+const approachingFromBelow = scrollingUp && r.top < vh * 1.2;   // 120% - Early trigger
+const approachingFromAbove = !scrollingUp && r.bottom > vh * -0.2; // -20% - Extended trigger
+```
+
+#### **Rule 5: Transform vs Opacity**
+```css
+/* Transform visibility sorunlarına sebep olabilir */
+transform: translateY(-100vh); /* Map viewport dışına çıkar */
+
+/* Hem transform hem opacity kullan: */
+transform: showMap ? 'translateY(0)' : 'translateY(-100vh)';
+opacity: showMap ? 1 : 0;
+```
+
+### **🚀 Çözüm Implementasyonu**
+
+#### **Enhanced Viewport Logic**
+```javascript
+if (metroStepIndex >= 0) {
+  const metroEl = steps[metroStepIndex] as HTMLElement;
+  const r = metroEl.getBoundingClientRect();
+  const inView = r.top < vh * 0.95 && r.bottom > vh * 0.05;
+  
+  // 🔥 Magic happens here - bidirectional approach detection
+  const approachingFromBelow = scrollingUp && r.top < vh * 1.2;
+  const approachingFromAbove = !scrollingUp && r.bottom > vh * -0.2;
+  
+  forceMapShow = inView || approachingFromBelow || approachingFromAbove;
+}
+```
+
+#### **Fixed CSS Transform**
+```svelte
+<div
+  class="fullwidth-map-container"
+  style:transform={showMap ? 'translateY(0)' : 'translateY(-100vh)'}
+  style:opacity={showMap ? 1 : 0}
+  style:pointer-events={showMap ? 'auto' : 'none'}
+>
+```
+
+### **✅ Sonuç: Unified Scrollytelling Experience**
+
+```
+Scroll Down: Map → First Text → Second Text → Map Transition ✅
+Scroll Up:   Map Transition → Second Text → First Text → Map ✅
+
+İkisi de aynı intermediate step'leri gösteriyor! 🎉
+```
+
+### **🧠 Öğrenilen Pattern'ler**
+
+1. **Debug First**: Önce ne olduğunu anla, sonra çöz
+2. **Logic vs Style**: İkisini ayrı ayrı test et  
+3. **Bidirectional**: Her zaman iki yönü düşün
+4. **Viewport Thresholds**: Smooth geçişler için threshold'ları genişlet
+5. **Transform Pitfalls**: CSS transform'lar visibility'yi etkileyebilir
+
+Bu pattern'i kullanarak gelecekte tüm scrollytelling bug'larını çözebilirsin! 🔥

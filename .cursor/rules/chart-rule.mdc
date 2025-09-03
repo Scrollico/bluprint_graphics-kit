@@ -1,0 +1,101 @@
+---
+description: When implementing new map scenes, **always create reverse scenarios** for smooth scroll-up experiences.
+alwaysApply: false
+---
+# Chart Rules & Scroll Mechanics
+
+## Core Rule: Reverse Scroll Scenarios
+
+When implementing new map scenes, **always create reverse scenarios** for smooth scroll-up experiences.
+
+### Example Implementation Pattern
+
+If you have 3 scenes:
+
+1. **Scene 1**: Zoom out (full map)
+2. **Scene 2**: Zoom in (specific country)
+3. **Scene 3**: Rotate/pitch (3D effect)
+
+You must implement reverse transitions:
+
+- **Scroll Down**: Zoom out → Zoom in → Rotate
+- **Scroll Up**: Rotate → Zoom in → Zoom out
+
+### Why This Matters
+
+Without reverse scenarios, when users scroll up, the map stays in the same state, creating a jarring experience. The reverse mechanics ensure smooth transitions in both directions.
+
+### Implementation Checklist
+
+- [ ] Identify all scene transitions
+- [ ] Implement forward transitions (scroll down)
+- [ ] Implement reverse transitions (scroll up)
+- [ ] Test smoothness in both directions
+- [ ] Ensure no flickering or state conflicts
+
+### Code Pattern
+
+```typescript
+// In your scrollytelling component
+$: if (currentStep === 6) {
+  // Forward: Zoom to Germany
+  zoomToCountryRegion('DEU');
+} else if (currentStep === 5) {
+  // Reverse: Zoom out from Germany
+  resetToFullMap();
+}
+
+$: if (currentStep === 7) {
+  // Forward: Apply pitch
+  applyPitchAngle(45);
+} else if (currentStep === 6) {
+  // Reverse: Remove pitch
+  applyPitchAngle(0);
+}
+```
+
+### Best Practices
+
+1. **State Management**: Track current and previous states
+2. **Smooth Transitions**: Use D3 transitions for all changes
+3. **Consistent Timing**: Maintain same duration for forward/reverse
+4. **Easing Functions**: Use consistent easing for both directions
+5. **Testing**: Always test scroll up/down scenarios
+
+---
+
+## Quick Reference: Map Capabilities
+
+### Interactive Features
+
+- ✅ Country highlighting with smooth color transitions
+- ✅ Zoom to specific countries/regions
+- ✅ 3D pitch/rotation effects
+- ✅ Fullwidth responsive display
+- ✅ Hover tooltips and interactions
+
+### Animation Types
+
+- ✅ Color transitions (highlight/pale effects)
+- ✅ Position transitions (zoom in/out)
+- ✅ Scale transitions (size changes)
+- ✅ Rotation transitions (3D pitch effects)
+- ✅ Opacity transitions (fade effects)
+
+### Data Integration
+
+- ✅ GeoJSON loading and rendering
+- ✅ CSV data parsing and binding
+- ✅ Real-time data updates
+- ✅ Multiple data source support
+
+### Performance Optimizations
+
+- ✅ D3 transitions for smooth animations
+- ✅ RequestAnimationFrame for 60fps
+- ✅ Efficient DOM manipulation
+- ✅ Lazy loading of assets
+
+---
+
+_This guide ensures consistent, smooth user experiences across all map visualizations._

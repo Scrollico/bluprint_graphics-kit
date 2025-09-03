@@ -1,0 +1,135 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Istanbul",
+        "region": "Marmara"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [28.5, 41.0], [29.5, 41.0], [29.5, 41.2], [28.5, 41.2], [28.5, 41.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Ankara",
+        "region": "Central Anatolia"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [32.5, 39.5], [33.5, 39.5], [33.5, 39.7], [32.5, 39.7], [32.5, 39.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Izmir",
+        "region": "Aegean"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [27.0, 38.0], [28.0, 38.0], [28.0, 38.2], [27.0, 38.2], [27.0, 38.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Antalya",
+        "region": "Mediterranean"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [30.5, 36.5], [31.5, 36.5], [31.5, 36.7], [30.5, 36.7], [30.5, 36.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Trabzon",
+        "region": "Black Sea"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [39.5, 40.5], [40.5, 40.5], [40.5, 40.7], [39.5, 40.7], [39.5, 40.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Van",
+        "region": "Eastern Anatolia"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [43.0, 38.0], [44.0, 38.0], [44.0, 38.2], [43.0, 38.2], [43.0, 38.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Diyarbakir",
+        "region": "Southeastern Anatolia"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [40.5, 37.5], [41.5, 37.5], [41.5, 37.7], [40.5, 37.7], [40.5, 37.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Konya",
+        "region": "Central Anatolia"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [31.5, 37.5], [32.5, 37.5], [32.5, 37.7], [31.5, 37.7], [31.5, 37.5]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Bursa",
+        "region": "Marmara"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [29.0, 40.0], [30.0, 40.0], [30.0, 40.2], [29.0, 40.2], [29.0, 40.0]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Adana",
+        "region": "Mediterranean"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [35.0, 36.5], [36.0, 36.5], [36.0, 36.7], [35.0, 36.7], [35.0, 36.5]
+        ]]
+      }
+    }
+  ]
+}

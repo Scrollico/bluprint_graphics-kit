@@ -1,0 +1,41 @@
+[
+  {
+    "id": "T5",
+    "name": "T5 Eminönü - Alibeyköy Cep Otogarı",
+    "type": "Tramvay",
+    "color": "#8483bd"
+  },
+  {
+    "id": "M1A",
+    "name": "M1A Yenikapı - Atatürk Havalimanı",
+    "type": "Hafif Metro",
+    "color": "#e01a1a",
+    "stations": 18
+  },
+  {
+    "id": "T1",
+    "name": "T1 Kabataş - Bağcılar",
+    "type": "Tramvay",
+    "color": "#365991",
+    "stations": 31
+  },
+  {
+    "id": "M2",
+    "name": "M2 Yenikapı - Seyrantepe - Hacıosman",
+    "type": "Metro",
+    "color": "#27ab0d",
+    "stations": 17
+  },
+  {
+    "id": "M3",
+    "name": "M3 Bakırköy Sahil - Kayaşehir Merkez",
+    "type": "Metro",
+    "color": "#24b1e0"
+  },
+  {
+    "id": "M9",
+    "name": "M9 Ataköy - Olimpiyat",
+    "type": "Metro",
+    "color": "#e7c21a"
+  }
+]

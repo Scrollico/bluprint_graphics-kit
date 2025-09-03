@@ -1,0 +1,354 @@
+---
+description: when a new map needs to be implemented, use this
+alwaysApply: false
+---
+# How‑to: Flourish‑style Scrollytelling (One Runtime, Many Scenes)
+
+This guide shows how to replicate Flourish’s “one chart → another chart” feel in this repo using a single, persistent chart runtime that transitions between scene states as you scroll.
+
+## Concept
+
+- Single runtime: Keep one SVG/canvas/WebGL component mounted. Don’t mount/unmount charts per step.
+- Scene states: Each scroll step maps to a “scene” object (domains, visibility, data, annotations).
+- Scroll progress: Interpolate from the current scene to the next using a `t` value in [0..1] that you already compute (`scrollProgress`).
+
+## Files you will add
+
+- `src/lib/components/charts/ChartOrchestrator.svelte` – persistent chart shell.
+- `src/lib/components/charts/layers/Bars.svelte` – example data layer.
+- `src/lib/components/charts/layers/Line.svelte` – example data layer.
+- Scene config and wiring inside your page (e.g., `pages/marmaray/+page.svelte`).
+
+You can swap Bars/Line with your real layers (maps, areas, points) – the pattern stays the same.
+
+## 1) Create the orchestrator
+
+A single chart component that:
+- Receives two scenes (`sceneA`, `sceneB`) and a progress `t`.
+- Keeps axes/layout persistent.
+- Crossfades or morphs between layer visibilities/props.
+
+```svelte
+<!-- src/lib/components/charts/ChartOrchestrator.svelte -->
+<script lang="ts">
+  import Axis from './Axis.svelte'; // optional, or inline axes
+  import Bars from './layers/Bars.svelte';
+  import Line from './layers/Line.svelte';
+  export let sceneA: any;
+  export let sceneB: any;
+  export let t = 0; // 0..1 scroll progress
+
+  // Helpers
+  const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
+  const lerpDomain = (a: [number, number], b: [number, number], p: number) => [
+    lerp(a[0], b[0], p),
+    lerp(a[1], b[1], p)
+  ];
+
+  // Derived blended state
+  $: xDomain = lerpDomain(sceneA.xDomain, sceneB.xDomain, t);
+  $: yDomain = lerpDomain(sceneA.yDomain, sceneB.yDomain, t);
+
+  // Crossfade by scene visibility flags
+  $: barsOpacity = (sceneA.showBars ? 1 - t : 0) + (sceneB.showBars ? t : 0);
+  $: lineOpacity = (sceneA.showLine ? 1 - t : 0) + (sceneB.showLine ? t : 0);
+
+  // Feed a single dataset if you prefer; or keep per-scene datasets
+  $: barData = sceneB.barData ?? sceneA.barData;
+  $: lineData = sceneB.lineData ?? sceneA.lineData;
+</script>
+
+<svg class="chart" preserveAspectRatio="xMidYMid meet">
+  <!-- Optional persistent axes -->
+  <Axis {xDomain} {yDomain} />
+
+  <g style="opacity: {barsOpacity}">
+    <Bars {barData} {xDomain} {yDomain} t={t} />
+  </g>
+
+  <g style="opacity: {lineOpacity}">
+    <Line {lineData} {xDomain} {yDomain} t={t} />
+  </g>
+</svg>
+
+<style>
+  .chart { width: 100%; height: 100%; }
+</style>
+```
+
+## 2) Example layers
+
+Keep layers dumb and driven by props + `t`. Favor GPU-friendly transforms/opacity.
+
+```svelte
+<!-- src/lib/components/charts/layers/Bars.svelte -->
+<script lang="ts">
+  export let barData: Array<{ x: number; y: number }> = [];
+  export let xDomain: [number, number];
+  export let yDomain: [number, number];
+  export let t = 0;
+  const sx = (x:number)=> (x - xDomain[0]) / (xDomain[1]-xDomain[0]) * 800; // mock scale
+  const sy = (y:number)=> 400 - (y - yDomain[0]) / (yDomain[1]-yDomain[0]) * 400;
+</script>
+
+<g>
+  {#each barData as d}
+    <rect x={sx(d.x)-8*(1-t)} width={16*(1-t)} y={sy(d.y)} height={400-sy(d.y)} fill="#1976d2" />
+  {/each}
+</g>
+```
+
+```svelte
+<!-- src/lib/components/charts/layers/Line.svelte -->
+<script lang="ts">
+  export let lineData: Array<{ x: number; y: number }> = [];
+  export let xDomain: [number, number];
+  export let yDomain: [number, number];
+  export let t = 0;
+  const sx = (x:number)=> (x - xDomain[0]) / (xDomain[1]-xDomain[0]) * 800;
+  const sy = (y:number)=> 400 - (y - yDomain[0]) / (yDomain[1]-yDomain[0]) * 400;
+</script>
+
+<path d={lineData.length
+  ? "M" + lineData.map(d=>`${sx(d.x)},${sy(d.y)}`).join(" L")
+  : ''}
+  fill="none"
+  stroke="#d32f2f"
+  stroke-width="2"
+  style="opacity:{t}"/>
+```
+
+Note: Replace the mock scales with your D3 or internal scales.
+
+## 3) Scene configuration
+
+Define scenes near your page. Each step gets a state.
+
+```ts
+// pages/your-page/+page.svelte
+const scenes = [
+  { xDomain:[0,10], yDomain:[0,50], showBars:true, showLine:false, barData },
+  { xDomain:[0,10], yDomain:[0,1],  showBars:false, showLine:true, lineData },
+  { xDomain:[2,8],  yDomain:[0,1],  showBars:false, showLine:true, lineData },
+];
+```
+
+## 4) Wire to scroll progress
+
+You already compute `scrollProgress` between the current step and next step. Use the index of the current step to pick `sceneA`/`sceneB` and pass `t`.
+
+```svelte
+<script lang="ts">
+  import ChartOrchestrator from '$lib/components/charts/ChartOrchestrator.svelte';
+  // existing: currentStep, scrollProgress
+</script>
+
+<div class="orchestrated-chart">
+  <ChartOrchestrator
+    sceneA={scenes[currentStep]}
+    sceneB={scenes[Math.min(currentStep+1, scenes.length-1)]}
+    t={scrollProgress}
+  />
+</div>
+```
+
+Ensure the chart container stays mounted (like your MapboxMap block) and only animate transform/opacity for entry/exit.
+
+## 5) Tips for Flourish‑like smoothness
+
+- Keep scaffolding persistent (axes, grid). Move camera/scales; avoid re-creating DOM.
+- Use opacity and transforms on groups; avoid animating thousands of attributes.
+- Preload data; don’t fetch during scroll.
+- Ease the `t` if needed (`cubicOut`, `smoothstep`) but keep it deterministic.
+- Limit change per scene (domain, color, filter) so movement feels purposeful.
+
+## 6) Troubleshooting
+
+- Flicker on scene change → Ensure a single SVG and toggle layer opacity; don’t unmount.
+- Jumping scales → Interpolate domains instead of replacing.
+- Performance dips → Reduce mark count, use Canvas/WebGL for dense layers, or bin/aggregate data.
+- Scroll bounce → Clamp `t` to [0..1] and throttle resize/scroll handlers.
+
+## 7) Next steps
+
+- Swap Bars/Line with your real layers (map, points, area, annotations).
+- Add annotations that fade/slide with `t`.
+- Extract scene configs from JSON/YAML so editors can set up sequences without code.
+
+If you want, I can scaffold these files and convert one of your story sections to this orchestrator so you can see the effect end‑to‑end.
+
+# How‑to: Flourish‑style Scrollytelling (One Runtime, Many Scenes)
+
+This guide shows how to replicate Flourish’s “one chart → another chart” feel in this repo using a single, persistent chart runtime that transitions between scene states as you scroll.
+
+## Concept
+
+- Single runtime: Keep one SVG/canvas/WebGL component mounted. Don’t mount/unmount charts per step.
+- Scene states: Each scroll step maps to a “scene” object (domains, visibility, data, annotations).
+- Scroll progress: Interpolate from the current scene to the next using a `t` value in [0..1] that you already compute (`scrollProgress`).
+
+## Files you will add
+
+- `src/lib/components/charts/ChartOrchestrator.svelte` – persistent chart shell.
+- `src/lib/components/charts/layers/Bars.svelte` – example data layer.
+- `src/lib/components/charts/layers/Line.svelte` – example data layer.
+- Scene config and wiring inside your page (e.g., `pages/marmaray/+page.svelte`).
+
+You can swap Bars/Line with your real layers (maps, areas, points) – the pattern stays the same.
+
+## 1) Create the orchestrator
+
+A single chart component that:
+- Receives two scenes (`sceneA`, `sceneB`) and a progress `t`.
+- Keeps axes/layout persistent.
+- Crossfades or morphs between layer visibilities/props.
+
+```svelte
+<!-- src/lib/components/charts/ChartOrchestrator.svelte -->
+<script lang="ts">
+  import Axis from './Axis.svelte'; // optional, or inline axes
+  import Bars from './layers/Bars.svelte';
+  import Line from './layers/Line.svelte';
+  export let sceneA: any;
+  export let sceneB: any;
+  export let t = 0; // 0..1 scroll progress
+
+  // Helpers
+  const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
+  const lerpDomain = (a: [number, number], b: [number, number], p: number) => [
+    lerp(a[0], b[0], p),
+    lerp(a[1], b[1], p)
+  ];
+
+  // Derived blended state
+  $: xDomain = lerpDomain(sceneA.xDomain, sceneB.xDomain, t);
+  $: yDomain = lerpDomain(sceneA.yDomain, sceneB.yDomain, t);
+
+  // Crossfade by scene visibility flags
+  $: barsOpacity = (sceneA.showBars ? 1 - t : 0) + (sceneB.showBars ? t : 0);
+  $: lineOpacity = (sceneA.showLine ? 1 - t : 0) + (sceneB.showLine ? t : 0);
+
+  // Feed a single dataset if you prefer; or keep per-scene datasets
+  $: barData = sceneB.barData ?? sceneA.barData;
+  $: lineData = sceneB.lineData ?? sceneA.lineData;
+</script>
+
+<svg class="chart" preserveAspectRatio="xMidYMid meet">
+  <!-- Optional persistent axes -->
+  <Axis {xDomain} {yDomain} />
+
+  <g style="opacity: {barsOpacity}">
+    <Bars {barData} {xDomain} {yDomain} t={t} />
+  </g>
+
+  <g style="opacity: {lineOpacity}">
+    <Line {lineData} {xDomain} {yDomain} t={t} />
+  </g>
+</svg>
+
+<style>
+  .chart { width: 100%; height: 100%; }
+</style>
+```
+
+## 2) Example layers
+
+Keep layers dumb and driven by props + `t`. Favor GPU-friendly transforms/opacity.
+
+```svelte
+<!-- src/lib/components/charts/layers/Bars.svelte -->
+<script lang="ts">
+  export let barData: Array<{ x: number; y: number }> = [];
+  export let xDomain: [number, number];
+  export let yDomain: [number, number];
+  export let t = 0;
+  const sx = (x:number)=> (x - xDomain[0]) / (xDomain[1]-xDomain[0]) * 800; // mock scale
+  const sy = (y:number)=> 400 - (y - yDomain[0]) / (yDomain[1]-yDomain[0]) * 400;
+</script>
+
+<g>
+  {#each barData as d}
+    <rect x={sx(d.x)-8*(1-t)} width={16*(1-t)} y={sy(d.y)} height={400-sy(d.y)} fill="#1976d2" />
+  {/each}
+</g>
+```
+
+```svelte
+<!-- src/lib/components/charts/layers/Line.svelte -->
+<script lang="ts">
+  export let lineData: Array<{ x: number; y: number }> = [];
+  export let xDomain: [number, number];
+  export let yDomain: [number, number];
+  export let t = 0;
+  const sx = (x:number)=> (x - xDomain[0]) / (xDomain[1]-xDomain[0]) * 800;
+  const sy = (y:number)=> 400 - (y - yDomain[0]) / (yDomain[1]-yDomain[0]) * 400;
+</script>
+
+<path d={lineData.length
+  ? "M" + lineData.map(d=>`${sx(d.x)},${sy(d.y)}`).join(" L")
+  : ''}
+  fill="none"
+  stroke="#d32f2f"
+  stroke-width="2"
+  style="opacity:{t}"/>
+```
+
+Note: Replace the mock scales with your D3 or internal scales.
+
+## 3) Scene configuration
+
+Define scenes near your page. Each step gets a state.
+
+```ts
+// pages/your-page/+page.svelte
+const scenes = [
+  { xDomain:[0,10], yDomain:[0,50], showBars:true, showLine:false, barData },
+  { xDomain:[0,10], yDomain:[0,1],  showBars:false, showLine:true, lineData },
+  { xDomain:[2,8],  yDomain:[0,1],  showBars:false, showLine:true, lineData },
+];
+```
+
+## 4) Wire to scroll progress
+
+You already compute `scrollProgress` between the current step and next step. Use the index of the current step to pick `sceneA`/`sceneB` and pass `t`.
+
+```svelte
+<script lang="ts">
+  import ChartOrchestrator from '$lib/components/charts/ChartOrchestrator.svelte';
+  // existing: currentStep, scrollProgress
+</script>
+
+<div class="orchestrated-chart">
+  <ChartOrchestrator
+    sceneA={scenes[currentStep]}
+    sceneB={scenes[Math.min(currentStep+1, scenes.length-1)]}
+    t={scrollProgress}
+  />
+</div>
+```
+
+Ensure the chart container stays mounted (like your MapboxMap block) and only animate transform/opacity for entry/exit.
+
+## 5) Tips for Flourish‑like smoothness
+
+- Keep scaffolding persistent (axes, grid). Move camera/scales; avoid re-creating DOM.
+- Use opacity and transforms on groups; avoid animating thousands of attributes.
+- Preload data; don’t fetch during scroll.
+- Ease the `t` if needed (`cubicOut`, `smoothstep`) but keep it deterministic.
+- Limit change per scene (domain, color, filter) so movement feels purposeful.
+
+## 6) Troubleshooting
+
+- Flicker on scene change → Ensure a single SVG and toggle layer opacity; don’t unmount.
+- Jumping scales → Interpolate domains instead of replacing.
+- Performance dips → Reduce mark count, use Canvas/WebGL for dense layers, or bin/aggregate data.
+- Scroll bounce → Clamp `t` to [0..1] and throttle resize/scroll handlers.
+
+## 7) Next steps
+
+- Swap Bars/Line with your real layers (map, points, area, annotations).
+- Add annotations that fade/slide with `t`.
+- Extract scene configs from JSON/YAML so editors can set up sequences without code.
+
+If you want, I can scaffold these files and convert one of your story sections to this orchestrator so you can see the effect end‑to‑end.
+

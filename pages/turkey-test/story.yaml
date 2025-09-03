@@ -1,0 +1,80 @@
+meta:
+  title: "Marmaray'da Son 5 Yılda 29 İntihar Vakası"
+  description: "2021-2025 yılları arasında Marmaray hatlarında yaşanan intihar vakalarının analizi"
+  authors:
+    - "ALİ SAFA KORKUT"
+  section: "Graphics"
+  publishDate: "2025-08-24"
+layout:
+  type: two-column
+  sticky: graphic
+  graphicPosition: left
+steps:
+  - id: '1.0'
+    type: intro
+    content:
+      headline: "Marmaray'da Son 5 Yılda 29 İntihar Vakası"
+      text: "İstanbul'un iki yakasını birbirine bağlayan Marmaray hattı, her gün milyonlarca yolcuyu taşıyor. Ancak aynı hat, son beş yılda başka bir yolculuğun da sessiz bir tanığı oldu: Ölüm yolculuklarının."
+
+  - id: '2.1' 
+    type: chart
+    content:
+      text: "2021 ile 2025 yılları arasında Marmaray istasyonlarında, kayıtlara geçen en az 29 intihar ya da intihar girişimi yaşandı. İstanbul genelinde bu vakaların dağılımını görmek için haritaya bakalım."
+    visual:
+      component: TurkeyMapChart
+      data: turkey.json
+      props:
+        width: 800
+        height: 600
+        zoomToIstanbul: false
+    transition:
+      duration: 1200
+      ease: cubicInOut
+
+  - id: '2.2'
+    type: map_action
+    content:
+      text: "Yenikapı, Ayrılık Çeşmesi ve Bostancı, en fazla ölümün yaşandığı duraklar olurken, vakalar en çok haftanın başında ve sabah saatlerinde meydana geldi."
+    visual:
+      component: TurkeyMapChart
+      state:
+        zoom:
+          region: "istanbul"
+          coordinates: [28.9784, 41.0082]
+          level: 8
+      props:
+        showMetroLines: true
+    transition:
+      duration: 1500
+      ease: ease-out
+
+  - id: '3.1'
+    type: chart
+    content:
+      text: "Metro istasyonlarında da durum farklı değil. 2016'dan beri çeşitli metro istasyonlarda 22 intihar girişimi yaşandı. Veriler, intihar vakalarının her yıl katlanarak arttığını gösterirken vakaların genellikle sabah saatlerinde yaşandığına işaret ediyor."
+    visual:
+      component: IstanbulMetroMap
+      data: "metro-data.json"
+      props:
+        highlightLine: "M2"
+        showStations: true
+
+  - id: '4.1'
+    type: data_update
+    content:
+      text: "Bu vakalar sadece sayılar değil. Her birinin arkasında bir yaşam hikayesi, bir aile trajedisi var. Marmaray yönetimi, bu olayları ya yalnızca 'üzücü bir olay' diye duyurdu ya da hiç duyurmadı bile."
+    visual:
+      component: TimeChart
+      data: "marmaray-incidents.csv"
+      props:
+        width: 800
+        height: 400
+        chartType: "line"
+        dateField: "date"
+        valueField: "incidents"
+
+  - id: '5.0'
+    type: conclusion
+    content:
+      headline: "Çözüm İçin Atılabilecek Adımlar"
+      text: "Platform kapıları, dünyada en etkili fiziksel çözüm olarak öne çıkıyor. Tokyo, Seul ve Paris gibi metropollerde yaygın olarak kullanılan bu sistemler, trenle temas riskini tamamen ortadan kaldırıyor."

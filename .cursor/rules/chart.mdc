@@ -1,0 +1,7 @@
+---
+description: When working with chart, map, call mcp-server-chart mcp
+alwaysApply: false
+---
+
+- When working with chart, call mcp-server-chart mcp.
+- when you implement a new scene of map, always create reverse scenario. For example, i gave you a task to zoom one of the maps, another task to rotate, so we have 3 scenes. you should create scroll up mechanisim, and implement similar experience, from rotate to zoom, and zoom to zoom out. otherwise, when scroll up, it stays as same.
