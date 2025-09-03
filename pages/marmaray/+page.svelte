@@ -1799,12 +1799,13 @@
 
   /* Yearly trend textbox overlay styling */
   .yearly-trend-textbox-overlay {
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: 2rem;
     transform: translateY(-50%);
     z-index: 1000;
     max-width: 500px;
+    width: 500px;
 
     .video-narrative-text {
       background: rgba(255, 255, 255, 0.95);
