@@ -50,6 +50,17 @@
   let pulseState: any = null; // holds lines + pulses arrays OR anchor pulses
   let lastTime = 0;
 
+  function applyOrientation(pitch: number, bearing: number, duration: number) {
+    if (!map) return;
+    if (map.isMoving()) {
+      map.once('moveend', () =>
+        map.easeTo({ pitch, bearing, duration, essential: true })
+      );
+    } else {
+      map.easeTo({ pitch, bearing, duration, essential: true });
+    }
+  }
+
   // Map configurations for each step
   const mapConfigs: Record<
     string,
@@ -613,14 +624,13 @@
   $: if (map && mapLoaded) {
     try {
       if (cinematic) {
-        map.flyTo({
-          pitch: Math.max(0, Math.min(60, cinematicPitch)),
-          bearing: cinematicBearing,
-          duration: 700,
-          essential: true,
-        });
+        applyOrientation(
+          Math.max(0, Math.min(60, cinematicPitch)),
+          cinematicBearing,
+          700
+        );
       } else {
-        map.flyTo({ pitch: 0, bearing: 0, duration: 600, essential: true });
+        applyOrientation(0, 0, 600);
       }
     } catch {}
   }
