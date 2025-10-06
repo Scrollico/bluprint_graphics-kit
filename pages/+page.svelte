@@ -122,7 +122,7 @@
               Interactive European map with smooth zoom animations and
               data-driven insights.
             </p>
-            <a href="/scrollytelling" class="card-link">View Story →</a>
+            <a href="/marmaray" class="card-link">View Story →</a>
           </div>
         </div>
       </div>
@@ -132,31 +132,35 @@
     <section class="categories-section">
       <h2>Story Categories</h2>
       <div class="categories-grid">
-        <a href="/mapbox-clone" class="category-card">
+        <a href="/marmaray" class="category-card">
           <div class="category-icon">🗺️</div>
-          <h3>Mapbox Clone</h3>
+          <h3>Marmaray Story</h3>
           <p>
-            Direct clone of Mapbox storytelling template with native Mapbox GL
-            JS integration
+            Interactive scrollytelling story about suicide prevention in
+            Istanbul's metro system
           </p>
         </a>
 
-        <a href="/map-storytelling" class="category-card">
+        <a href="/layout-system" class="category-card">
           <div class="category-icon">📖</div>
-          <h3>Map Storytelling</h3>
-          <p>Clean scrollytelling based on Mapbox storytelling template</p>
+          <h3>Layout System</h3>
+          <p>Test page for layout system components and design patterns</p>
         </a>
 
-        <a href="/map-test" class="category-card">
+        <a href="/marmaray" class="category-card">
           <div class="category-icon">🧪</div>
-          <h3>Map Testing</h3>
-          <p>Simple map testing without complex scrollytelling logic</p>
+          <h3>Data Visualization</h3>
+          <p>
+            Interactive charts and data visualizations in the Marmaray story
+          </p>
         </a>
 
-        <a href="/demos" class="category-card">
+        <a href="/marmaray" class="category-card">
           <div class="category-icon">🎨</div>
-          <h3>Demos & Examples</h3>
-          <p>Collection of demonstration pages and interactive examples</p>
+          <h3>Interactive Stories</h3>
+          <p>
+            Explore our interactive scrollytelling stories and data journalism
+          </p>
         </a>
       </div>
     </section>
