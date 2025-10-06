@@ -72,7 +72,7 @@
       text: `Her şey bir anda oldu. Tarih, 30 Ekim 2021. Soğuk bir sonbahar akşamı, saat 18.18.\nMarmaray, her zamanki Halkalı-Gebze seferini yapmak üzere raylarda ilerliyordu. Ancak o gün her zamanki rutinini yapan sadece o değildi. Bir yurttaş da yorucu bir günün ardından iş çıkış saatinde, evine gitmek üzere Marmaray Bostancı istasyonuna doğru yürüyordu.`,
       visual: 'video',
       align: 'left',
-      videoSrc: '/media-assets/video/step-1.mp4',
+      videoSrc: '/video/step-1.mp4',
     },
     {
       id: 'step-4-2',
@@ -80,7 +80,7 @@
       text: `Marmaray treni Suadiye istasyonundan ayrıldığı sırada o yurttaş da Bostancı istasyonundaki turnikelere İstanbulkartı’nı okutup perona doğru ilerlemeye başladı. Yaklaşık bir dakikalık bekleyişin ardından trenin ışıkları göründü. Hızla yaklaşan treni gören yurttaş, sakin adımlarla sarı çizgiye doğru ilermeye başladı.`,
       visual: 'video',
       align: 'center',
-      videoSrc: '/media-assets/video/step-2.mp4',
+      videoSrc: '/video/step-2.mp4',
     },
     {
       id: 'step-4-3',
@@ -88,7 +88,7 @@
       text: `Sonrasında her şey bir anda oldu.\n\nTren tam yavaşlamaya başlayacaktı ki, peronun en ucunda, trenle peronun kesiştiği noktada bekleyen yurttaş, trenin hız kaybetmesine fırsat vermeden attı kendini raylara doğru. Önce trene çarptı, ardından da çarpmanın etkisiyle ileri savrularak trenin altında kaldı.`,
       visual: 'video',
       align: 'right',
-      videoSrc: '/media-assets/video/step-3.mp4',
+      videoSrc: '/video/step-3.mp4',
     },
     {
       id: 'step-5-1',
