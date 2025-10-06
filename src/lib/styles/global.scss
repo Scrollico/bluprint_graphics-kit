@@ -2,3 +2,58 @@
 // You can use it to write styles for any elements on pages or embeds
 // and to override any defaults that are part of our house design system.
 @use '@reuters-graphics/graphics-components/scss/mixins' as mixins;
+@use './theme.scss';
+
+/* DIN Pro font-face (expects files in /static/fonts/) - DISABLED - files not found */
+/* @font-face {
+  font-family: 'DIN Pro';
+  src: url('/fonts/DINPro.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('/fonts/DINPro-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('/fonts/DINPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+} */
+
+html, body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* Generic chart panel wrapper */
+.chart-panel {
+  background: var(--panel);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* Global text block background for readability */
+:global(.body-text) {
+  background: var(--panel);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+:global(.body-text p) {
+  margin-bottom: 1rem;
+}
+
+:global(.body-text p:last-child) {
+  margin-bottom: 0;
+}

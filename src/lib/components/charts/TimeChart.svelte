@@ -7,16 +7,25 @@
   }> = [];
 
   export let title: string = 'Yıllara göre Marmaray ölüm sayısı';
+  // Optional sizing (accepted but not used by default)
+  export let width: number | undefined = undefined;
+  export let height: number | undefined = undefined;
 
   let container: HTMLElement;
   let isVisible = false;
+  let animationProgress = 0;
 
   onMount(() => {
+    console.log('🎯 TimeChart component mounted with data:', data);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             isVisible = true;
+            // Smooth animation
+            setTimeout(() => {
+              animationProgress = 1;
+            }, 200);
           }
         });
       },
@@ -35,142 +44,158 @@
   });
 
   $: maxCount = Math.max(...data.map((d) => d.count));
-  $: colors = [
-    '#d32f2f',
-    '#ff9800',
-    '#4caf50',
-    '#2196f3',
-    '#9c27b0',
-    '#607d8b',
-  ];
+  $: scale = maxCount > 0 ? 100 / maxCount : 1;
 </script>
 
-<div class="time-chart" bind:this={container}>
+<div class="reuters-chart-container" bind:this={container}>
   <div class="chart-header">
-    <h3>{title}</h3>
+    <h4 class="chart-title">{title}</h4>
   </div>
 
-  <div class="chart-container">
-    {#each data as item, index}
-      <div class="time-segment" style="animation-delay: {index * 0.2}s">
-        <div class="segment-bar">
-          <div
-            class="bar"
-            style="height: {(item.count / maxCount) *
-              150}px; background: {colors[index % colors.length]}"
-          ></div>
+  <div class="chart-body">
+    <div class="bar-chart">
+      {#each data as item, index}
+        <div class="bar-container" style="animation-delay: {index * 0.15}s">
+          <div class="bar-wrapper">
+            <div
+              class="bar"
+              style="height: {isVisible ?
+                item.count * scale * animationProgress
+              : 0}%"
+            ></div>
+            <div class="bar-value">{item.count}</div>
+          </div>
+          <div class="bar-label">{item.time}</div>
         </div>
-        <div class="time-info">
-          <div class="time-label">{item.time}</div>
-          <div class="count">{item.count}</div>
-        </div>
-      </div>
-    {/each}
-  </div>
+      {/each}
+    </div>
 
-  <div class="chart-footer">
-    <p>En yüksek ölüm sayısı: {maxCount}</p>
+    <div class="chart-baseline"></div>
   </div>
 </div>
 
 <style lang="scss">
-  .time-chart {
+  .reuters-chart-container {
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 1rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .chart-header {
-    text-align: center;
-    margin-bottom: 2rem;
-
-    h3 {
-      color: #1976d2;
-      margin: 0;
-      font-size: 1.5rem;
-    }
+    padding: 1.5rem 2rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
   }
 
-  .chart-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: end;
-    height: 200px;
-    padding: 0 1rem;
+  .chart-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    line-height: 1.3;
+  }
+
+  .chart-body {
     position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: #e0e0e0;
-    }
+    padding: 2rem;
   }
 
-  .time-segment {
+  .bar-chart {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    height: 280px;
+    gap: 0.5rem;
+  }
+
+  .bar-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
     opacity: 0;
-    transform: translateY(20px);
     animation: fadeInUp 0.8s ease-out forwards;
+    max-width: 60px;
+  }
 
-    .segment-bar {
-      position: relative;
-      width: 40px;
-      height: 150px;
-      display: flex;
-      align-items: end;
-    }
+  .bar-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+  }
 
-    .bar {
-      width: 100%;
-      border-radius: 4px 4px 0 0;
-      transition: all 0.3s ease;
-      position: relative;
-    }
+  .bar {
+    width: 32px;
+    background: #dc3545;
+    border-radius: 4px 4px 0 0;
+    transition: height 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
 
-    .time-info {
-      text-align: center;
-      min-width: 80px;
-
-      .time-label {
-        font-size: 0.8rem;
-        color: #666;
-        margin-bottom: 0.25rem;
-        font-weight: 500;
-      }
-
-      .count {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #333;
-      }
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+      border-radius: 2px 2px 0 0;
     }
   }
 
-  .chart-footer {
+  .bar-value {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #ffffff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+    min-width: 20px;
     text-align: center;
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e0e0e0;
+  }
 
-    p {
-      color: #666;
-      font-size: 0.9rem;
-      margin: 0;
-    }
+  .bar-label {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: #666666;
+    text-align: center;
+    font-weight: 500;
+    max-width: 100%;
+    word-wrap: break-word;
+    line-height: 1.2;
+  }
+
+  .chart-baseline {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: #e0e0e0;
   }
 
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(16px);
     }
     to {
       opacity: 1;
@@ -179,32 +204,49 @@
   }
 
   @media (max-width: 768px) {
-    .time-chart {
-      padding: 0.5rem;
+    .reuters-chart-container {
+      margin: 1rem auto;
+      max-width: 100%;
     }
 
-    .chart-container {
-      height: 150px;
-      padding: 0 0.5rem;
+    .chart-header {
+      padding: 1rem 1.5rem 0.75rem;
     }
 
-    .time-segment {
-      .segment-bar {
-        width: 30px;
-        height: 120px;
-      }
+    .chart-title {
+      font-size: 1.1rem;
+    }
 
-      .time-info {
-        min-width: 60px;
+    .chart-body {
+      padding: 1.5rem 1rem;
+    }
 
-        .time-label {
-          font-size: 0.7rem;
-        }
+    .bar-chart {
+      height: 200px;
+      gap: 0.25rem;
+    }
 
-        .count {
-          font-size: 1rem;
-        }
-      }
+    .bar-container {
+      max-width: 40px;
+    }
+
+    .bar {
+      width: 24px;
+    }
+
+    .bar-wrapper {
+      height: 160px;
+    }
+
+    .bar-value {
+      font-size: 0.75rem;
+      top: -24px;
+      padding: 1px 4px;
+    }
+
+    .bar-label {
+      font-size: 0.7rem;
+      margin-top: 0.5rem;
     }
   }
 </style>

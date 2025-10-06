@@ -13,13 +13,16 @@ const initialize = {
   params: {
     protocolVersion: '2025-03-26',
     capabilities: {},
-    clientInfo: { name: 'CodexCLI', version: 'dev' }
-  }
+    clientInfo: { name: 'CodexCLI', version: 'dev' },
+  },
 };
 
 function writeMessage(msg) {
   const payload = Buffer.from(JSON.stringify(msg), 'utf8');
-  const header = Buffer.from(`Content-Length: ${payload.length}\r\n\r\n`, 'utf8');
+  const header = Buffer.from(
+    `Content-Length: ${payload.length}\r\n\r\n`,
+    'utf8'
+  );
   child.stdin.write(header);
   child.stdin.write(payload);
 }
@@ -62,5 +65,7 @@ setTimeout(() => writeMessage(initialize), 250);
 
 setTimeout(() => {
   console.error('Timeout waiting for MCP response');
-  try { child.kill('SIGKILL'); } catch {}
+  try {
+    child.kill('SIGKILL');
+  } catch {}
 }, 8000);

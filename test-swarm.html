@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swarm Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-container { max-width: 1000px; margin: 0 auto; }
+        .controls { margin-bottom: 20px; }
+        .controls label { margin-right: 15px; }
+        .chart-container { border: 1px solid #ccc; padding: 20px; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Global Solutions Swarm Test</h1>
+        <p>This is a test to verify the swarm component is working with country colors and highlighting.</p>
+        
+        <div class="chart-container">
+            <p><strong>Expected behavior:</strong></p>
+            <ul>
+                <li>Swarm clusters should be colored by country (Tokyo=red, London=dark blue, Seoul=blue, Paris=purple, etc.)</li>
+                <li>Country names should appear above each cluster</li>
+                <li>No legend should be visible</li>
+                <li>When a city is highlighted, other clusters should dim (opacity 0.3)</li>
+            </ul>
+            
+            <p><strong>Note:</strong> This is a static test page. The actual component should be visible in the Marmaray story at the global solutions steps (18.1-18.5).</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+:root {
+  /* Base palette inspired by the new map style */
+  --bg: #f2f3f7;
+  --panel: rgba(255, 255, 255, 0.85);
+  --ink: #1b1f23;
+  --muted-ink: #6b7280;
+  --grid: rgba(27, 31, 35, 0.08);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  /* Accents for series and highlights */
+  --accent: #5aa0ff;   /* primary series */
+  --accent-2: #ff8e6e; /* secondary series */
+  --accent-3: #5fd0b5; /* tertiary series */
+
+  /* Typography - using system fonts since DIN Pro not available */
+  --font-sans: Inter, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+}

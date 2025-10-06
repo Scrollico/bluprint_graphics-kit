@@ -3,9 +3,17 @@
  * Eliminates AI hallucination by generating deterministic code
  */
 
-import type { StorySchema, StoryStep, StoryVisual, ComponentName } from './story-schema.js';
+import type {
+  StorySchema,
+  StoryStep,
+  StoryVisual,
+  ComponentName,
+} from './story-schema.js';
 import type { ComponentInfo } from './component-registry.js';
-import { componentRegistry, validateComponentProps } from './component-registry.js';
+import {
+  componentRegistry,
+  validateComponentProps,
+} from './component-registry.js';
 import { validateStorySchema } from './story-schema.js';
 
 export interface CompilerOptions {
@@ -32,7 +40,7 @@ export class StoryCompiler {
       svelte: '',
       layout: '',
       errors: [],
-      warnings: []
+      warnings: [],
     };
 
     // Validate schema first
@@ -74,24 +82,26 @@ ${styles}`;
     const imports = [
       "import { onMount, onDestroy } from 'svelte';",
       "import { scroller } from '$utils/scroll';",
-      "import {",
-      "  SEO,",
-      "  SiteHeader,",
-      "  SiteFooter,",
-      "  Theme,",
-      "  SiteHeadline,",
-      "  BodyText,",
-      "  EndNotes,",
+      'import {',
+      '  SEO,',
+      '  SiteHeader,',
+      '  SiteFooter,',
+      '  Theme,',
+      '  SiteHeadline,',
+      '  BodyText,',
+      '  EndNotes,',
       "} from '@reuters-graphics/graphics-components';",
       "import { assets } from '$app/paths';",
       "import { page } from '$app/state';",
-      "import pkg from '$pkg';"
+      "import pkg from '$pkg';",
     ];
 
     // Add component imports
     const componentImports = this.getUniqueComponents(story);
-    componentImports.forEach(component => {
-      imports.push(`import ${component} from '$lib/components/charts/${component}.svelte';`);
+    componentImports.forEach((component) => {
+      imports.push(
+        `import ${component} from '$lib/components/charts/${component}.svelte';`
+      );
     });
 
     // Add stylesheets
@@ -105,7 +115,7 @@ ${styles}`;
 
   private generateScript(story: StorySchema): string {
     const imports = this.generateImports(story).join('\n  ');
-    
+
     return `<script lang="ts">
   ${imports}
 
@@ -159,7 +169,7 @@ ${styles}`;
 
   private generateTemplate(story: StorySchema): string {
     const layout = story.layout || { type: 'two-column', sticky: 'graphic' };
-    
+
     return `<SEO
   baseUrl={import.meta.env.BASE_URL}
   pageUrl={page.url}
@@ -199,25 +209,27 @@ ${styles}`;
       ${this.generateSteps(story)}
     </div>`;
     }
-    
+
     // Add other layout types as needed
     return this.generateSteps(story);
   }
 
   private generateVisualSwitcher(story: StorySchema): string {
-    const visualSteps = story.steps.filter(step => step.visual);
-    
+    const visualSteps = story.steps.filter((step) => step.visual);
+
     if (visualSteps.length === 0) {
       return '<div class="placeholder">No visualizations defined</div>';
     }
 
-    const cases = visualSteps.map((step, index) => {
-      const component = step.visual!.component;
-      const props = this.generatePropsString(step.visual!);
-      
-      return `  {:else if currentStep === ${story.steps.indexOf(step)}}
+    const cases = visualSteps
+      .map((step, index) => {
+        const component = step.visual!.component;
+        const props = this.generatePropsString(step.visual!);
+
+        return `  {:else if currentStep === ${story.steps.indexOf(step)}}
     <${component}${props} />`;
-    }).join('\n');
+      })
+      .join('\n');
 
     return `{#if currentStep === 0}
   <div class="intro-placeholder">
@@ -244,57 +256,66 @@ ${cases}
   }
 
   private generateSteps(story: StorySchema): string {
-    return story.steps.map((step, index) => {
-      const spacing = step.layout?.spacing || 'normal';
-      const background = step.layout?.background || 'white';
-      
-      let content = '';
-      
-      if (step.content?.headline) {
-        content += `<h2>${step.content.headline}</h2>`;
-      }
-      
-      if (step.content?.text) {
-        content += `<BodyText text="${step.content.text}" />`;
-      }
-      
-      if (step.content?.quote) {
-        content += `<blockquote>
+    return story.steps
+      .map((step, index) => {
+        const spacing = step.layout?.spacing || 'normal';
+        const background = step.layout?.background || 'white';
+
+        let content = '';
+
+        if (step.content?.headline) {
+          content += `<h2>${step.content.headline}</h2>`;
+        }
+
+        if (step.content?.text) {
+          content += `<BodyText class=\"body-text\" text=\"${step.content.text}\" />`;
+        }
+
+        if (step.content?.quote) {
+          content += `<blockquote>
           <p>"${step.content.quote.text}"</p>
           ${step.content.quote.attribution ? `<cite>${step.content.quote.attribution}</cite>` : ''}
         </blockquote>`;
-      }
+        }
 
-      return `
+        return `
       <section class="step step-${index} spacing-${spacing}" style="background: ${background}">
         ${content}
       </section>`;
-    }).join('\n');
+      })
+      .join('\n');
   }
 
   private generateStateVariables(story: StorySchema): string {
-    const visualSteps = story.steps.filter(step => step.visual);
-    const components = new Set(visualSteps.map(step => step.visual!.component));
-    
-    return Array.from(components).map(component => {
-      return `let ${component.toLowerCase()}State = {};`;
-    }).join('\n  ');
+    const visualSteps = story.steps.filter((step) => step.visual);
+    const components = new Set(
+      visualSteps.map((step) => step.visual!.component)
+    );
+
+    return Array.from(components)
+      .map((component) => {
+        return `let ${component.toLowerCase()}State = {};`;
+      })
+      .join('\n  ');
   }
 
   private generateStateUpdateFunction(story: StorySchema): string {
-    const visualSteps = story.steps.filter(step => step.visual);
-    
-    const cases = visualSteps.map((step, index) => {
-      const stepIndex = story.steps.indexOf(step);
-      const state = step.visual!.state;
-      
-      if (!state) return '';
-      
-      return `    case ${stepIndex}:
+    const visualSteps = story.steps.filter((step) => step.visual);
+
+    const cases = visualSteps
+      .map((step, index) => {
+        const stepIndex = story.steps.indexOf(step);
+        const state = step.visual!.state;
+
+        if (!state) return '';
+
+        return `    case ${stepIndex}:
       // Update state for step ${step.id}
       ${this.generateStateUpdate(step.visual!)}
       break;`;
-    }).filter(Boolean).join('\n');
+      })
+      .filter(Boolean)
+      .join('\n');
 
     return `function updateVisuals(stepIndex: number) {
     switch(stepIndex) {
@@ -305,28 +326,46 @@ ${cases}
 
   private generateStateUpdate(visual: StoryVisual): string {
     if (!visual.state) return '';
-    
+
     const component = visual.component.toLowerCase();
     const updates: string[] = [];
-    
+
     if (visual.state.zoom) {
-      updates.push(`${component}State.zoom = ${JSON.stringify(visual.state.zoom)};`);
+      updates.push(
+        `${component}State.zoom = ${JSON.stringify(visual.state.zoom)};`
+      );
     }
-    
+
+    if (visual.state.camera) {
+      updates.push(
+        `${component}State.camera = ${JSON.stringify(visual.state.camera)};`
+      );
+    }
+
+    if (visual.state.layers) {
+      updates.push(
+        `${component}State.layers = ${JSON.stringify(visual.state.layers)};`
+      );
+    }
+
     if (visual.state.highlight) {
-      updates.push(`${component}State.highlight = ${JSON.stringify(visual.state.highlight)};`);
+      updates.push(
+        `${component}State.highlight = ${JSON.stringify(visual.state.highlight)};`
+      );
     }
-    
+
     if (visual.state.filter) {
-      updates.push(`${component}State.filter = ${JSON.stringify(visual.state.filter)};`);
+      updates.push(
+        `${component}State.filter = ${JSON.stringify(visual.state.filter)};`
+      );
     }
-    
+
     return updates.join('\n      ');
   }
 
   private generatePropsString(visual: StoryVisual): string {
     const props: string[] = [];
-    
+
     if (visual.props) {
       Object.entries(visual.props).forEach(([key, value]) => {
         if (typeof value === 'string') {
@@ -336,7 +375,7 @@ ${cases}
         }
       });
     }
-    
+
     if (visual.data) {
       if (typeof visual.data === 'string') {
         props.push(`data="${visual.data}"`);
@@ -344,17 +383,17 @@ ${cases}
         props.push(`data={${JSON.stringify(visual.data)}}`);
       }
     }
-    
+
     // Add state binding
     const component = visual.component.toLowerCase();
     props.push(`bind:state={${component}State}`);
-    
+
     return props.length > 0 ? ' ' + props.join(' ') : '';
   }
 
   private generateStyles(story: StorySchema): string {
     const layout = story.layout || { type: 'two-column' };
-    
+
     return `<style lang="scss">
   .scrollytelling-container {
     max-width: 1200px;
@@ -471,19 +510,22 @@ export const load: LayoutLoad = async () => {
 
   private getUniqueComponents(story: StorySchema): ComponentName[] {
     const components = new Set<ComponentName>();
-    
-    story.steps.forEach(step => {
+
+    story.steps.forEach((step) => {
       if (step.visual?.component) {
         components.add(step.visual.component);
       }
     });
-    
+
     return Array.from(components);
   }
 }
 
 // Utility function for CLI usage
-export function compileStoryFromYAML(yamlContent: string, options: CompilerOptions = {}): CompilerResult {
+export function compileStoryFromYAML(
+  yamlContent: string,
+  options: CompilerOptions = {}
+): CompilerResult {
   try {
     const story = JSON.parse(yamlContent) as StorySchema; // For now, using JSON. Can add YAML parser later
     const compiler = new StoryCompiler(options);
@@ -494,7 +536,7 @@ export function compileStoryFromYAML(yamlContent: string, options: CompilerOptio
       svelte: '',
       layout: '',
       errors: [`YAML parsing error: ${error}`],
-      warnings: []
+      warnings: [],
     };
   }
 }

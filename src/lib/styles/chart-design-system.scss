@@ -1,0 +1,369 @@
+/*
+ * Chart Design System
+ * Unified styling for all charts based on ONS Charts principles
+ * Provides consistent colors, typography, and materials across all visualizations
+ */
+
+// =============================================================================
+// COLOR PALETTE
+// =============================================================================
+
+// Primary Colors (ONS-inspired)
+$chart-primary: #1d70b8;        // ONS Blue
+$chart-primary-dark: #0b0c0c;   // ONS Dark Blue
+$chart-primary-light: #5694ca;  // Light Blue
+
+// Secondary Colors
+$chart-secondary: #d4351c;      // ONS Red
+$chart-secondary-light: #f47738; // Light Red
+$chart-accent: #00703c;         // ONS Green
+$chart-accent-light: #28a197;   // Light Green
+
+// Neutral Colors
+$chart-text: #0b0c0c;           // Primary text
+$chart-text-secondary: #505a5f; // Secondary text
+$chart-text-muted: #626a6e;     // Muted text
+$chart-background: #ffffff;     // Chart background
+$chart-border: #b1b4b6;         // Border color
+$chart-grid: #f3f2f1;           // Grid lines
+
+// Data Colors (Sequential)
+$chart-data-1: #1d70b8;        // Primary data
+$chart-data-2: #d4351c;         // Secondary data
+$chart-data-3: #00703c;         // Tertiary data
+$chart-data-4: #f47738;         // Quaternary data
+$chart-data-5: #28a197;         // Quinary data
+$chart-data-6: #912b88;         // Senary data
+$chart-data-7: #f499be;         // Septenary data
+$chart-data-8: #b58840;         // Octonary data
+
+// Semantic Colors
+$chart-success: #00703c;
+$chart-warning: #f47738;
+$chart-error: #d4351c;
+$chart-info: #1d70b8;
+
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+
+// Font Families
+$chart-font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$chart-font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+
+// Font Sizes
+$chart-font-xs: 0.75rem;    // 12px
+$chart-font-sm: 0.875rem;  // 14px
+$chart-font-base: 1rem;    // 16px
+$chart-font-lg: 1.125rem;  // 18px
+$chart-font-xl: 1.25rem;   // 20px
+$chart-font-2xl: 1.5rem;   // 24px
+$chart-font-3xl: 1.875rem; // 30px
+
+// Font Weights
+$chart-font-light: 300;
+$chart-font-normal: 400;
+$chart-font-medium: 500;
+$chart-font-semibold: 600;
+$chart-font-bold: 700;
+
+// Line Heights
+$chart-leading-tight: 1.25;
+$chart-leading-normal: 1.5;
+$chart-leading-relaxed: 1.75;
+
+// =============================================================================
+// SPACING
+// =============================================================================
+
+$chart-space-xs: 0.25rem;   // 4px
+$chart-space-sm: 0.5rem;    // 8px
+$chart-space-md: 1rem;      // 16px
+$chart-space-lg: 1.5rem;     // 24px
+$chart-space-xl: 2rem;      // 32px
+$chart-space-2xl: 3rem;     // 48px
+
+// =============================================================================
+// CHART DIMENSIONS
+// =============================================================================
+
+// Default Chart Sizes
+$chart-width-default: 800px;
+$chart-height-default: 400px;
+$chart-width-small: 400px;
+$chart-height-small: 300px;
+$chart-width-large: 1200px;
+$chart-height-large: 600px;
+
+// Margins
+$chart-margin-top: 40px;
+$chart-margin-right: 20px;
+$chart-margin-bottom: 40px;
+$chart-margin-left: 60px;
+
+// =============================================================================
+// COMPONENT STYLES
+// =============================================================================
+
+// Chart Container
+.chart-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $chart-background;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: $chart-font-primary;
+}
+
+// Chart Title
+.chart-title {
+  font-size: $chart-font-2xl;
+  font-weight: $chart-font-semibold;
+  color: $chart-text;
+  text-align: center;
+  margin-bottom: $chart-space-lg;
+  line-height: $chart-leading-tight;
+}
+
+// Chart Subtitle
+.chart-subtitle {
+  font-size: $chart-font-sm;
+  color: $chart-text-secondary;
+  text-align: center;
+  margin-bottom: $chart-space-xl;
+  line-height: $chart-leading-normal;
+}
+
+// Chart Caption
+.chart-caption {
+  font-size: $chart-font-xs;
+  color: $chart-text-muted;
+  text-align: left;
+  margin-top: $chart-space-md;
+  line-height: $chart-leading-normal;
+}
+
+// =============================================================================
+// SVG STYLING
+// =============================================================================
+
+// Global SVG Styles
+:global(.chart-svg) {
+  font-family: $chart-font-primary;
+  font-size: $chart-font-sm;
+  
+  // Axes
+  .axis {
+    .domain {
+      stroke: $chart-border;
+      stroke-width: 1px;
+    }
+    
+    .tick {
+      line {
+        stroke: $chart-border;
+        stroke-width: 1px;
+      }
+      
+      text {
+        fill: $chart-text-secondary;
+        font-size: $chart-font-xs;
+        font-weight: $chart-font-normal;
+      }
+    }
+  }
+  
+  // Grid Lines
+  .grid {
+    stroke: $chart-grid;
+    stroke-width: 1px;
+    stroke-dasharray: 2, 2;
+  }
+  
+  // Data Elements
+  .bar {
+    stroke: none;
+    stroke-width: 0;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+  }
+  
+  .line {
+    stroke-width: 2px;
+    fill: none;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      stroke-width: 3px;
+    }
+  }
+  
+  .area {
+    opacity: 0.6;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+  
+  .dot {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      r: 6;
+      stroke-width: 2px;
+    }
+  }
+  
+  // Labels
+  .label {
+    font-size: $chart-font-xs;
+    font-weight: $chart-font-medium;
+    fill: $chart-text;
+    text-anchor: middle;
+  }
+  
+  .value-label {
+    font-size: $chart-font-xs;
+    font-weight: $chart-font-semibold;
+    fill: $chart-text;
+    text-anchor: middle;
+  }
+  
+  // Legend
+  .legend {
+    font-size: $chart-font-xs;
+    font-weight: $chart-font-normal;
+    fill: $chart-text-secondary;
+  }
+}
+
+// =============================================================================
+// TOOLTIP STYLING
+// =============================================================================
+
+:global(.chart-tooltip) {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: $chart-space-sm $chart-space-md;
+  border-radius: 4px;
+  font-size: $chart-font-xs;
+  font-weight: $chart-font-medium;
+  line-height: $chart-leading-tight;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  
+  .tooltip-title {
+    font-weight: $chart-font-semibold;
+    margin-bottom: $chart-space-xs;
+  }
+  
+  .tooltip-value {
+    color: #e0e0e0;
+  }
+}
+
+// =============================================================================
+// RESPONSIVE DESIGN
+// =============================================================================
+
+@media (max-width: 768px) {
+  .chart-container {
+    padding: $chart-space-sm;
+  }
+  
+  .chart-title {
+    font-size: $chart-font-xl;
+  }
+  
+  .chart-subtitle {
+    font-size: $chart-font-xs;
+  }
+  
+  :global(.chart-svg) {
+    font-size: $chart-font-xs;
+    
+    .axis .tick text {
+      font-size: 10px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-title {
+    font-size: $chart-font-lg;
+  }
+  
+  :global(.chart-svg) {
+    .axis .tick text {
+      font-size: 9px;
+    }
+  }
+}
+
+// =============================================================================
+// ACCESSIBILITY
+// =============================================================================
+
+// High Contrast Mode
+@media (prefers-contrast: high) {
+  :global(.chart-svg) {
+    .bar, .line, .area, .dot {
+      stroke: currentColor;
+      stroke-width: 2px;
+    }
+  }
+}
+
+// Reduced Motion
+@media (prefers-reduced-motion: reduce) {
+  :global(.chart-svg) {
+    .bar, .line, .area, .dot {
+      transition: none;
+    }
+  }
+}
+
+// =============================================================================
+// UTILITY CLASSES
+// =============================================================================
+
+.chart-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: $chart-text-secondary;
+  font-size: $chart-font-sm;
+}
+
+.chart-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: $chart-error;
+  font-size: $chart-font-sm;
+  text-align: center;
+}
+
+.chart-no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: $chart-text-muted;
+  font-size: $chart-font-sm;
+  text-align: center;
+}
+

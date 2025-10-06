@@ -30,15 +30,15 @@ export interface StoryStep {
   layout?: StepLayout;
 }
 
-export type StepType = 
-  | 'intro'           // Introduction with title/byline
-  | 'text'            // Text-only step
-  | 'chart'           // Show chart/visualization
-  | 'map_action'      // Map zoom, highlight, etc.
-  | 'data_update'     // Update chart data
-  | 'annotation'      // Add annotations/callouts
-  | 'comparison'      // Side-by-side comparison
-  | 'conclusion';     // Wrap-up/conclusion
+export type StepType =
+  | 'intro' // Introduction with title/byline
+  | 'text' // Text-only step
+  | 'chart' // Show chart/visualization
+  | 'map_action' // Map zoom, highlight, etc.
+  | 'data_update' // Update chart data
+  | 'annotation' // Add annotations/callouts
+  | 'comparison' // Side-by-side comparison
+  | 'conclusion'; // Wrap-up/conclusion
 
 export interface StoryContent {
   text?: string;
@@ -65,7 +65,7 @@ export interface StoryVisual {
 // Available chart components from your lib/components/charts/
 export type ComponentName =
   | 'TurkeyMapChart'
-  | 'TurkeyMap' 
+  | 'TurkeyMap'
   | 'EuropeanMapChart'
   | 'EuropeMapChart'
   | 'IstanbulMetroMap'
@@ -75,7 +75,9 @@ export type ComponentName =
   | 'TimeChart'
   | 'IntroChart'
   | 'DollarsBar'
-  | 'Railroad3D';
+  | 'Railroad3D'
+  // Blueprint Charts - New unified chart system
+  | 'BlueprintChart';
 
 export interface VisualState {
   // Map-specific states
@@ -84,6 +86,20 @@ export interface VisualState {
     coordinates?: [number, number];
     level?: number;
   };
+  // Mapbox-style camera control (chapters)
+  camera?: {
+    center?: [number, number]; // [lng, lat]
+    zoom?: number;
+    pitch?: number;
+    bearing?: number;
+    padding?: { top?: number; right?: number; bottom?: number; left?: number };
+  };
+  // Layer toggles to mirror onChapterEnter/Exit behaviors
+  layers?: Array<{
+    id: string;
+    visibility?: 'none' | 'visible';
+    opacity?: number; // 0..1, applied to paint properties when supported
+  }>;
   highlight?: {
     countries?: string[];
     regions?: string[];
@@ -94,7 +110,7 @@ export interface VisualState {
     value: any;
     operator?: 'equals' | 'contains' | 'greater' | 'less';
   };
-  // Chart-specific states  
+  // Chart-specific states
   focus?: {
     dataPoint?: number;
     category?: string;
@@ -119,7 +135,13 @@ export interface Annotation {
 
 export interface StoryTransition {
   duration?: number; // milliseconds
-  ease?: 'linear' | 'ease' | 'ease-in' | 'ease-out' | 'ease-in-out' | 'cubicInOut';
+  ease?:
+    | 'linear'
+    | 'ease'
+    | 'ease-in'
+    | 'ease-out'
+    | 'ease-in-out'
+    | 'cubicInOut';
   delay?: number;
   type?: 'fade' | 'slide' | 'zoom' | 'none';
 }
@@ -155,95 +177,110 @@ export interface DataTransform {
 // Example story schema for your Turkey map example
 export const exampleStory: StorySchema = {
   meta: {
-    title: "Understanding Regional Data",
-    description: "A story about geographic patterns",
-    authors: ["Your Name"]
+    title: 'Understanding Regional Data',
+    description: 'A story about geographic patterns',
+    authors: ['Your Name'],
   },
   steps: [
     {
-      id: "1.0",
-      type: "intro",
+      id: '1.0',
+      type: 'intro',
       content: {
-        headline: "Regional Analysis",
-        text: "Let's explore the geographic distribution of data across Turkey."
+        headline: 'Regional Analysis',
+        text: "Let's explore the geographic distribution of data across Turkey.",
       },
       layout: {
-        type: "centered"
-      }
+        type: 'centered',
+      },
     },
     {
-      id: "2.1", 
-      type: "chart",
+      id: '2.1',
+      type: 'chart',
       content: {
-        text: "Here's the overall view of Turkey showing regional data patterns."
+        text: "Here's the overall view of Turkey showing regional data patterns.",
       },
       visual: {
-        component: "TurkeyMapChart",
-        data: "turkey.json",
+        component: 'TurkeyMapChart',
+        data: 'turkey.json',
         props: {
           width: 800,
-          height: 600
-        }
+          height: 600,
+        },
       },
       transition: {
         duration: 1200,
-        ease: "cubicInOut"
-      }
+        ease: 'cubicInOut',
+      },
     },
     {
-      id: "2.2",
-      type: "map_action", 
+      id: '2.2',
+      type: 'map_action',
       content: {
-        text: "Now let's zoom into Istanbul to see the detailed breakdown."
+        text: "Now let's zoom into Istanbul to see the detailed breakdown.",
       },
       visual: {
-        component: "TurkeyMapChart", // Same component, different state
+        component: 'TurkeyMapChart', // Same component, different state
         state: {
           zoom: {
-            region: "istanbul",
+            region: 'istanbul',
             coordinates: [28.9784, 41.0082],
-            level: 8
-          }
-        }
+            level: 8,
+          },
+        },
       },
       transition: {
         duration: 1500,
-        ease: "ease-out"
-      }
-    }
+        ease: 'ease-out',
+      },
+    },
   ],
   layout: {
-    type: "two-column",
-    sticky: "graphic",
-    graphicPosition: "left"
-  }
+    type: 'two-column',
+    sticky: 'graphic',
+    graphicPosition: 'left',
+  },
 };
 
 // Validation functions
-export function validateStorySchema(story: StorySchema): { valid: boolean; errors: string[] } {
+export function validateStorySchema(story: StorySchema): {
+  valid: boolean;
+  errors: string[];
+} {
   const errors: string[] = [];
-  
+
   // Required fields
-  if (!story.meta?.title) errors.push("Story title is required");
-  if (!story.steps || story.steps.length === 0) errors.push("At least one step is required");
-  
+  if (!story.meta?.title) errors.push('Story title is required');
+  if (!story.steps || story.steps.length === 0)
+    errors.push('At least one step is required');
+
   // Validate steps
   story.steps.forEach((step, index) => {
     if (!step.id) errors.push(`Step ${index} missing id`);
     if (!step.type) errors.push(`Step ${step.id || index} missing type`);
-    
+
     if (step.visual?.component) {
       const validComponents: ComponentName[] = [
-        'TurkeyMapChart', 'TurkeyMap', 'EuropeanMapChart', 'EuropeMapChart',
-        'IstanbulMetroMap', 'MarmarayStationChart', 'ZoomableMap', 
-        'SwarmChart', 'TimeChart', 'IntroChart', 'DollarsBar', 'Railroad3D'
+        'TurkeyMapChart',
+        'TurkeyMap',
+        'EuropeanMapChart',
+        'EuropeMapChart',
+        'IstanbulMetroMap',
+        'MarmarayStationChart',
+        'ZoomableMap',
+        'SwarmChart',
+        'TimeChart',
+        'IntroChart',
+        'DollarsBar',
+        'Railroad3D',
+        // Blueprint Charts - New unified chart system
+        'BlueprintChart',
       ];
-      
+
       if (!validComponents.includes(step.visual.component)) {
         errors.push(`Invalid component: ${step.visual.component}`);
       }
     }
   });
-  
+
   return { valid: errors.length === 0, errors };
 }

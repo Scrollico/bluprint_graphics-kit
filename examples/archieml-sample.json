@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "İstanbul Metro Hikâyesi",
+    "description": "Marmaray ve diğer hatlarda vakalar",
+    "authors": ["Editor"]
+  },
+  "layout": { "type": "two-column", "sticky": "graphic", "graphicPosition": "left" },
+  "steps": [
+    { "id": "1.0", "type": "intro", "content": { "headline": "Başlangıç", "text": "Giriş metni..." } },
+    {
+      "id": "2.0",
+      "type": "map_action",
+      "content": { "text": "İstanbul'a zoom yap" },
+      "chapter": {
+        "location": { "center": [28.9784, 41.0082], "zoom": 12, "pitch": 45, "bearing": 0 },
+        "layers": [
+          { "id": "marmaray-layer", "opacity": 0 },
+          { "id": "metro-layer", "opacity": 1 }
+        ]
+      }
+    }
+  ]
+}
+
+

@@ -1,4 +1,6 @@
 <script lang="ts">
+  export let logoPath: string = '';
+  export let brandName: string = 'Scrolli';
   export let navLinks: { label: string; href: string }[] = [
     { label: 'Keşfet', href: '#' },
     { label: 'Alara AI', href: '#' },
@@ -87,11 +89,7 @@
     </div>
 
     <!-- Mobile Hamburger Button -->
-    <button
-      class="hamburger-btn mobile-only"
-      onclick={toggleMenu}
-      aria-label="Toggle mobile menu"
-    >
+    <button class="hamburger-btn mobile-only" onclick={toggleMenu}>
       <span class="hamburger-line" class:open={isMenuOpen}></span>
       <span class="hamburger-line" class:open={isMenuOpen}></span>
       <span class="hamburger-line" class:open={isMenuOpen}></span>

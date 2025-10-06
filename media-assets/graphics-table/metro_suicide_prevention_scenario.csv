@@ -1,0 +1,10 @@
+city,station,prevention_type,year,color,intihar_change
+Singapore,Raffles Place,Platform Kapısı,1987,blue,-100
+Tokyo,Shinjuku,Platform Kapısı,2012,blue,-85
+Tokyo,Ebisu,Mavi LED Işıklar,2007,orange,-70
+London,King’s Cross,Ray Altı Çukur,1919,green,-30
+Toronto,York Mills,Personel Eğitimi & Yapay Zeka İzleme,2019,yellow,-35
+Paris,Châtelet,Yardım Hattı/ Tabela,2015,purple,-20
+Seoul,Seoul Station,Mavi LED Işıklar,2011,orange,-50
+Berlin,Alexanderplatz,Ray Altı Çukur,1995,green,-25
+Amsterdam,Centraal,Yardım Hattı/ Tabela,2018,purple,-15

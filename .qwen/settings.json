@@ -1,0 +1,8 @@
+{
+  "hideTips": true,
+  "hideBanner": true,
+  "hideFooter": true,
+  "showMemoryUsage": true,
+  "disableAutoUpdate": false,
+  "loadMemoryFromIncludeDirectories": true
+}

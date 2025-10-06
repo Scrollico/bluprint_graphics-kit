@@ -2336,7 +2336,7 @@ function main() {
   function initJSON() {
     // Minified json2.js from https://github.com/douglascrockford/JSON-js
     // This code is in the public domain.
-    // eslint-disable-next-line
+
     if (typeof JSON !== 'object') {
       JSON = {};
     }
@@ -2875,7 +2875,7 @@ function main() {
     });
     return [
       thisWidth == minWidth ? 0 : thisWidth,
-      !!nextWidth ? nextWidth - 1 : Infinity,
+      nextWidth ? nextWidth - 1 : Infinity,
     ];
   }
 

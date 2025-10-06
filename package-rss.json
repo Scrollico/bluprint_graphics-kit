@@ -1,0 +1,25 @@
+{
+  "name": "scrolli-rss-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for generating RSS feeds from Scrolli.co stories",
+  "main": "scrolli-rss-worker.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "dev": "wrangler dev",
+    "test": "node test-scrolli-rss.js"
+  },
+  "keywords": [
+    "rss",
+    "cloudflare-worker",
+    "scrolli",
+    "news",
+    "feed"
+  ],
+  "author": "Scrolli RSS Generator",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
+

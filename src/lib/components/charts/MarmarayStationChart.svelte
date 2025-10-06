@@ -13,6 +13,7 @@
   let isVisible = false;
 
   onMount(() => {
+    console.log('🎯 MarmarayStationChart component mounted with data:', data);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

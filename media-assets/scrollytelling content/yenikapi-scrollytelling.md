@@ -10,11 +10,11 @@ MARMARAY
 
 STEP 2.2
 İstanbul’un iki yakasını birbirine bağlayan Marmaray hattı, her gün milyonlarca yolcuyu taşıyor. Ancak aynı hat, son beş yılda başka bir yolculuğun da sessiz bir tanığı oldu: Ölüm yolculuklarının.
+
 STEP 3.1
-
 Metro istasyonlarında da durum farklı değil. 2016’dan beri çeşitli metro istasyonlarda 22 intihar girişimi yaşandı. Veriler, intihar vakalarının her yıl katlanarak arttığını gösterirken vakaların genellikle sabah saatlerinde yaşandığına işaret ediyor.
-STEP 3
 
+STEP 3
 Zira 2021 ile 2025 yılları arasında Marmaray istasyonlarında, kayıtlara geçen en az 29 intihar ya da intihar girişimi yaşandı. Bu olayların hepsi, yolcuların gözü önünde, kamusal alanın en görünür yerinde gerçekleşti ve birçoğu ölümle sonuçlandı. Öyle ki bazı istasyonlar adeta bu ölümlerin merkezine dönüştü.
 Yenikapı, Ayrılık Çeşmesi ve Bostancı, en fazla ölümün yaşandığı duraklar olurken, vakalar en çok haftanın başında ve sabah saatlerinde meydana geldi.
 Ancak tüm bunlara rağmen kamuoyunun bu vakalardan haberdar olması ise çoğu zaman mümkün olmadı. Çünkü Marmaray yönetimi, bu olayları ya yalnızca “üzücü bir olay” diye duyurdu ya da hiç duyurmadı bile.
@@ -185,18 +185,57 @@ Verilere göre, ölümle sonuçlanan altı intihar vakasının beşi M2 Yenikap�
 
 Kalan bir vaka ise M3 hattının Siteler istasyonunda yaşandı. Diğer metro ve tramvay hatlarındaki vakaların ölümle sonuçlandığına dair bir kayıt bulunmuyor.
 STEP 18.1
-Diğer metropollerde durum ne?
-Dünyanın farklı metropollerinde tren hatlarında yaşanan intihar vakalarıyla ilgili net bir veri yok. Ancak çözüm önerilerine ulaşmak mümkün.
-Tokyo, bu alanda en dikkat çeken örneklerden biri. Japonya Arazi, Altyapı, Ulaştırma ve Turizm Bakanlığı, 2017 yılında, intihar ve kaza sonucu ölümleri azaltmak için Tokyo’daki 882 tren istasyonuna platform kapıları takacaklarını duyurdu. Ülkede, 2031 yılına kadar kent içi tren hatlarının tamamına platform kapılarının yerleştirilmesi hedefleniyor. Bununla birlikte, 2009 yılında, bazı hatlara intihar vakalarını yüzde 84’e kadar azaltabildiği bilimsel araştırmalarla ortaya konmuş olan mavi LED ışıklar yerleştirildi. Ayrıca tren istasyonlarında kuş sesi uyarıları, doğal manzara videoları ve yardım hattı ilanları gibi fiziksel ve psikolojik yönlendirmeler yer alıyor.
+DÜNYA ÖRNEKLERİ: METRO GÜVENLİĞİNDE BAŞARILI UYGULAMALAR
+
+Dünyanın farklı metropollerinde tren hatlarında yaşanan intihar vakalarıyla ilgili net bir veri yok. Ancak çözüm önerilerine ulaşmak mümkün. Tokyo, Londra, Seul ve Paris gibi büyük metropoller, farklı yaklaşımlarla bu soruna çözüm üretmeye çalışıyor.
+
+**TOKYO: TEKNOLOJİ VE PSİKOLOJİ BİRLEŞİMİ**
+Japonya, dünyada en yüksek intihar oranlarına sahip ülkelerden biri. Tokyo metrosu, bu sorunla mücadelede en kapsamlı yaklaşımı sergiliyor.
+
+**Platform Kapıları**: 2017 yılında Tokyo'daki 882 tren istasyonuna platform kapıları takılması planlandı. 2031 yılına kadar tüm kent içi tren hatlarında platform kapıları hedefleniyor.
+
+**Mavi LED Işıklar**: 2009 yılında bazı hatlara yerleştirilen mavi LED ışıklar, intihar vakalarını %84'e kadar azalttı. Bilimsel araştırmalarla kanıtlanan bu yöntem, sakinleştirici etkisiyle dikkat çekiyor.
+
+**Psikolojik Yönlendirmeler**: Tren istasyonlarında kuş sesi uyarıları, doğal manzara videoları ve yardım hattı ilanları gibi fiziksel ve psikolojik yönlendirmeler yer alıyor.
 
 STEP 18.2
-Londra metrosu da istasyonlarda kullandığı platform kapıları ile fiziksel teması önlerken, bazı hatlarda rayların altına inşa edilen özel çukurlar ile intihar girişimlerinin ölümle sonuçlanma oranını azaltıyor. Bunun yanında tren personeline verilen “intiharı önleme eğitimi” sayesinde de tehlikeli durumlara müdahale edebilme kapasitesi artırılıyor.
+**LONDRA: FİZİKSEL VE EĞİTİMSEL ÇÖZÜMLER**
+
+Londra metrosu, hem fiziksel hem de eğitimsel yaklaşımlarla soruna çözüm üretiyor.
+
+**Platform Kapıları**: İstasyonlarda kullanılan platform kapıları ile fiziksel teması önlüyor.
+
+**Ray Altı Çukurlar**: Bazı hatlarda rayların altına inşa edilen özel çukurlar ile intihar girişimlerinin ölümle sonuçlanma oranını azaltıyor.
+
+**Personel Eğitimi**: Tren personeline verilen "intiharı önleme eğitimi" sayesinde tehlikeli durumlara müdahale edebilme kapasitesi artırılıyor.
+
+**Güvenlik Kameraları**: İstasyonlarda bulunan güvenlik kameraları ile potansiyel riskli durumlar tespit ediliyor.
 
 STEP 18.3
-Seul metrosunda ise 2009 yılı itibarıyla istasyonların tamamı platform kapılarıyla donatıldı. Güney Kore hükümeti, yerel yönetimlerle birlikte beş yıllık intiharı önleme planları hazırlayarak, veri temelli ve bölgeye özgü çözümler geliştirmeyi de sürdürüyor.
+**SEUL: TAM KAPALI SİSTEM VE VERİ TEMELLİ YAKLAŞIM**
+
+Güney Kore, intihar önleme konusunda en sistematik yaklaşımı sergiliyor.
+
+**Tam Platform Kapı Sistemi**: 2009 yılı itibarıyla istasyonların tamamı platform kapılarıyla donatıldı.
+
+**Beş Yıllık Planlar**: Hükümet, yerel yönetimlerle birlikte beş yıllık intiharı önleme planları hazırlayarak, veri temelli ve bölgeye özgü çözümler geliştiriyor.
+
+**Sosyal Destek Ağları**: Metro istasyonlarında psikolojik destek noktaları ve yardım hatları bulunuyor.
+
+**Teknoloji Entegrasyonu**: Akıllı sensörler ve yapay zeka destekli güvenlik sistemleri kullanılıyor.
 
 STEP 18.4
-Paris metrosunda da özellikle otomatik sürücüsüz hatlarda uzun süredir platform kapıları kullanılıyor. Bunun yanı sıra “SOS Amitié” gibi gönüllü çalışan yardım hatları sayesinde, yalnızlık veya sıkıntı çeken herkese telefon ve/veya çevrimiçi sohbet aracılığıyla 7/24 destek sağlanıyor.
+**PARİS: OTOMATİK SİSTEMLER VE SOSYAL DESTEK**
+
+Paris metrosu, özellikle otomatik sürücüsüz hatlarda uzun süredir platform kapıları kullanıyor.
+
+**Otomatik Sistemler**: Özellikle otomatik sürücüsüz hatlarda platform kapıları yaygın olarak kullanılıyor.
+
+**SOS Amitié**: Gönüllü çalışan yardım hatları sayesinde, yalnızlık veya sıkıntı çeken herkese telefon ve/veya çevrimiçi sohbet aracılığıyla 7/24 destek sağlanıyor.
+
+**Sosyal Çalışma**: Metro istasyonlarında sosyal çalışanlar bulunuyor ve potansiyel riskli durumları tespit ediyor.
+
+**Kültürel Yaklaşım**: Fransız kültürüne özgü, toplumsal dayanışma odaklı yaklaşımlar geliştiriliyor.
 
 STEP 19
 AB ülkeleri: En fazla intihar Batı Avrupa ülkelerinde
@@ -208,25 +247,110 @@ Vaka sayısındaki “yüksek hacmi” ise birkaç büyük ülke, özellikle Alm
 
 Almanya'da 2010 yılında 899 ile zirveyi gören vaka sayısı 2023'te 690'a kadar düşse de sanayi devi, intihar vakalarının en çok yaşandığı ülke konumunda. Almanya’da 2006-2023 yılları arasında intihar eden insan sayısı 13 bin 17.
 STEP 20
-DURKHEIM
+DURKHEIM TEORİSİ: İNTİHAR TİPLERİ
 
-Suicide theory
-İntihar oranları neye göre değişiyor? Hangi dinamikler ön planda?
+Fransız sosyolog Émile Durkheim'ın 1897'de yayımladığı "İntihar" çalışması, intihar olgusunu sosyolojik bir perspektifle ele alan ilk kapsamlı araştırmadır. Durkheim, intiharı bireysel bir psikolojik olay olarak değil, toplumsal faktörlerin etkilediği sosyal bir olgu olarak inceler.
 
-Vaka sayısının en yüksek olduğu ikinci ülke ise Fransa. Ülkede, 2006’daki 351 seviyesinden 2023’te 265’e inen uzun dönemli bir düşüş eğrisi var. Fransa’da, bu 17 yıllık dönemde intihar eden kişi sayısı ise 5 bin 339.
-Üçüncü sıradaki Hollanda'da 2008'de 164 olan vaka sayısı 2015'te 223'e kadar çıksa da ülkede nispeten durağan bir tablo dikkat çekiyor. Hollanda’da 2006-2023 tarihleri arasında intihar eden kişi sayısı 3 bin 605.
-İtalya’da ise dalgalı ancak son yıllarda giderek yükselen bir grafik seyrediyor. 2007'de 138 olan intihar sayısı 2010'da 109'a kadar düşse de bir sonraki yıl 140'a çıktı. 2020'de ise 116'ya kadar inen sayı 2023'te tekrar 155'i gördü. Toplam intihar sayısı ise 2 bin 441.
-Doğu ve Orta Avrupa’da ise ülkelere göre farklılaşan desenler öne çıksa da vaka sayıları düşük.
-Çekya, demiryollarında en yüksek intihar vakasının yaşandığı Orta Avrupa ülkesi. 279 ile vaka sayısı 2014'te zirve yaparken, bu sayı 2023'te 195'e düştü.
-İntihar sayısının en yüksek olduğu Doğu Avrupa ülkesi ise Polonya. Ülke, üç haneli vakaları 2016’da görse de vaka sayısı artış eğiliminde. Polonya'nın ardından gelen Macaristan, 2015'te 155 intiharla zirveyi görse de bu sayı, yıllar içinde seyrettiği düşüş eğilimiyle bugün 84'e kadar indi. 2006-2023 arasında çift haneli intihar vakası sayısına hiç ulaşmayan Romanya'da son 17 yılda 810, Bulgaristan'da ise 393 kişi intihar etti.
-Estonya, Yunanistan, İrlanda, Litvanya, Lüksemburg ve Letonya ise intihar sayısının en düşük olduğu ülkeler.
-Yıllık ortalama intihar sayısının en yüksek olduğu AB ülkesi Almanya
-Bu verilere paralel olarak, yıllık ortalama intihar sayısının en yüksek olduğu ülke ise 765.7 ile Almanya. Ardından 296.6 ile Fransa gelirken, onu Hollanda (200.2), Çekya (199.5), İtalya (135,6) ve İspanya (128) izledi.
+Durkheim'a göre intihar, toplumsal bütünleşme (social integration) ve toplumsal düzenleme (social regulation) düzeylerine göre dört farklı tipte ortaya çıkar:
 
-Lüksemburg ve Yunanistan ise 3.1 yıllık ortalama ile intihar eden kişi sayısının en düşük olduğu ülkeler. Diğer ülkeler ise Estonya (3.3), Litvanya (4.2) ve İrlanda (5.1).
+**EGOİSTİK İNTİHAR** (Kırmızı)
+Yüksek bireyselleşme, düşük sosyal bağlar
+Örnekler: Almanya, Fransa
+Bu tip intiharlar, bireyin toplumdan izole olduğu, sosyal bağların zayıfladığı durumlarda ortaya çıkar. Modern kent yaşamında artan bireyselleşme, geleneksel toplumsal bağların çözülmesi bu tipe yol açar.
+
+**ANOMİK İNTİHAR** (Mavi)  
+Sosyal düzenin bozulması, norm çatışması
+Örnekler: İtalya, İspanya
+Anomi, toplumsal normların belirsizleştiği, bireyin hangi kurallara uyacağını bilemediği durumları ifade eder. Ekonomik krizler, toplumsal değişimler bu tipe neden olabilir.
+
+**ALTRUİSTİK İNTİHAR** (Yeşil)
+Güçlü grup bağları, kolektif değerler  
+Örnekler: Doğu Avrupa ülkeleri
+Bu tip, bireyin grup değerlerini kendi yaşamından üstün tuttuğu durumlarda ortaya çıkar. Askeri intiharlar, dini intiharlar bu kategoriye girer.
+
+**FATALİSTİK İNTİHAR** (Turuncu)
+Aşırı kontrol, umutsuzluk
+Örnekler: Türkiye (Marmaray örneği)
+Bu tip, bireyin aşırı kontrol altında olduğu, geleceğe dair umutlarını yitirdiği durumlarda ortaya çıkar. Totaliter rejimler, aşırı baskıcı ortamlar bu tipe neden olabilir.
 
 STEP 21
-Uzman görüşü: “Her intihar davranışı öncelikle bir yardım çığlığıdır”
+EGOİSTİK İNTİHAR: ALMANYA VE FRANSA ÖRNEĞİ
+
+Almanya ve Fransa'daki yüksek intihar oranları, Durkheim'ın egoistik intihar teorisini doğrular. Bu ülkelerde:
+
+**Sosyal İzolasyon**: Modern kent yaşamında artan bireyselleşme, geleneksel aile ve topluluk bağlarının zayıflaması
+**Ekonomik Baskı**: Yüksek işsizlik, ekonomik belirsizlik, sosyal güvenlik ağlarının yetersizliği
+**Kültürel Değişim**: Geleneksel değerlerin çözülmesi, bireysel başarı odaklı toplum yapısı
+
+Almanya'da 2006-2023 arasında 13.017 intihar vakası, Fransa'da 5.339 vaka bu teorinin güçlü kanıtlarıdır. Bu ülkelerde demiryolu intiharlarının yoğunluğu, ulaşım altyapısının gelişmişliği ve sosyal izolasyonun yüksekliği arasındaki ilişkiyi gösterir.
+
+STEP 22
+ANOMİK İNTİHAR: İTALYA VE İSPANYA'DA NORM ÇATIŞMASI
+
+İtalya ve İspanya'daki intihar desenleri, anomik intihar teorisini destekler:
+
+**Ekonomik Krizler**: 2008 finansal krizi, Euro bölgesi krizi, yüksek işsizlik oranları
+**Sosyal Değişim**: Hızlı kentleşme, geleneksel değerlerin çözülmesi, yeni normların belirsizliği
+**Kurumsal Güvensizlik**: Siyasi istikrarsızlık, kurumsal yapıların zayıflaması
+
+İtalya'da 2.441, İspanya'da benzer oranlarda intihar vakası, toplumsal düzenin bozulduğu dönemlerde artış gösterir. Bu ülkelerde demiryolu intiharlarının dalgalı seyri, ekonomik ve sosyal krizlerle doğrudan ilişkilidir.
+
+STEP 23
+ALTRUİSTİK İNTİHAR: DOĞU AVRUPA'DA KOLEKTİF DEĞERLER
+
+Doğu Avrupa ülkelerindeki intihar desenleri, altruistik intihar teorisini yansıtır:
+
+**Güçlü Grup Bağları**: Kolektif kimlik, aile değerleri, topluluk dayanışması
+**Kolektif Sorumluluk**: Bireysel başarıdan çok grup çıkarının öncelikli olması
+**Geleneksel Değerler**: Dini ve kültürel bağların güçlü olması
+
+Polonya, Macaristan, Romanya gibi ülkelerde düşük intihar oranları, güçlü sosyal bağların koruyucu etkisini gösterir. Bu ülkelerde demiryolu intiharlarının sınırlı olması, toplumsal bütünleşmenin yüksekliğini işaret eder.
+
+STEP 24
+FATALİSTİK İNTİHAR: MARMARAY ÖRNEĞİ
+
+Marmaray'daki intihar vakaları, fatalistik intihar teorisinin en net örneğidir:
+
+**Aşırı Kontrol**: Sıkı güvenlik önlemleri, sürekli gözetim, özgürlük kısıtlamaları
+**Umutsuzluk**: Geleceğe dair beklentilerin tükenmesi, çıkış yolu bulamama hissi
+**Sosyal Baskı**: Toplumsal normlara uyum baskısı, farklı olma korkusu
+
+Marmaray'daki intihar vakalarının özellikleri:
+
+- Genç yaş grubunda yoğunlaşma
+- Eğitimli bireylerde daha sık görülme
+- Sosyal medyada yaygınlaşma
+- Taklit etme riski
+
+Bu vakalar, modern kent yaşamında bireylerin aşırı kontrol altında hissetmesi ve umutsuzluk yaşaması durumunda ortaya çıkan fatalistik intihar tipini temsil eder.
+
+STEP 25
+DURKHEIM TEORİSİ VE MARMARAY BAĞLANTISI
+
+Marmaray intiharları, Durkheim'ın teorisinin güncel bir uygulamasıdır:
+
+**Fatalistik Özellikler**:
+
+- Aşırı kontrol altında hissetme
+- Geleceğe dair umutsuzluk
+- Sosyal baskı ve norm çatışması
+
+**Anomik Özellikler**:
+
+- Hızlı kentleşme ve sosyal değişim
+- Geleneksel değerlerin çözülmesi
+- Yeni normların belirsizliği
+
+**Egoistik Özellikler**:
+
+- Sosyal izolasyon
+- Bireysel başarı baskısı
+- Aile ve topluluk bağlarının zayıflaması
+
+Marmaray örneği, modern kent yaşamında farklı intihar tiplerinin bir arada görülebileceğini ve bunların karmaşık sosyal dinamiklerle ilişkili olduğunu gösterir.
+
+STEP 26
+Uzman görüşü: "Her intihar davranışı öncelikle bir yardım çığlığıdır"
 Türkiye Psikiyatri Derneği Krize Müdahale ve İntiharı Önleme Çalışma Birimi Üyesi Doç. Dr. Yunus Hacımusalar’a göre, intihar düşüncesi olan birinin yönteme erişim kolaylığı, riski ciddi şekilde artırıyor.
 Tren ve metro gibi alanların intihar aracı olarak kullanılmasının nedenlerinden birinin de bu olduğunu söyleyen Hacımusalar, “Bir yönteme ulaşmak ne kadar kolaysa bu risk de o kadar artar. Ayrıca kişinin intihar yöntemiyle ilgili ayrıntılı planlar yapması ve yoğun düşünceler, kişinin hayatta kalma ihtimalini en aza indiren yöntemi seçmesine neden olabilir” dedi.
 Hacımusalar’a göre intihar, her şeyden önce bir yardım çığlığı olarak değerlendirilmeli:

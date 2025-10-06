@@ -343,5 +343,10 @@
     width: 100vw;
     height: calc(100vh - 80px); /* Match graphic-pane height */
     position: relative;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
   }
 </style>

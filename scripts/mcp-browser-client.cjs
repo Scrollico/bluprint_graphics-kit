@@ -25,7 +25,10 @@ function spawnServer() {
 
 function encodeMessage(msg) {
   const payload = Buffer.from(JSON.stringify(msg), 'utf8');
-  const header = Buffer.from(`Content-Length: ${payload.length}\r\n\r\n`, 'utf8');
+  const header = Buffer.from(
+    `Content-Length: ${payload.length}\r\n\r\n`,
+    'utf8'
+  );
   return Buffer.concat([header, payload]);
 }
 
@@ -63,7 +66,8 @@ async function main() {
       const waiter = pending.get(id);
       if (waiter) {
         pending.delete(id);
-        if (obj.error) waiter.reject(new Error(obj.error.message || String(obj.error.code)));
+        if (obj.error)
+          waiter.reject(new Error(obj.error.message || String(obj.error.code)));
         else waiter.resolve(obj.result);
         return;
       }
@@ -113,19 +117,20 @@ async function main() {
   const initResult = await request('initialize', {
     protocolVersion: LATEST_PROTOCOL_VERSION,
     capabilities: {},
-    clientInfo: { name: 'CodexCLI', version: 'dev' }
+    clientInfo: { name: 'CodexCLI', version: 'dev' },
   });
-  if (!initResult || !initResult.protocolVersion) throw new Error('Invalid initialize result');
+  if (!initResult || !initResult.protocolVersion)
+    throw new Error('Invalid initialize result');
   notify('notifications/initialized', {});
   console.log('[initialized] protocolVersion=', initResult.protocolVersion);
 
   // If args specify a call, perform it; otherwise list tools
-  const [,, cmd, toolName, toolArgsJson] = process.argv;
+  const [, , cmd, toolName, toolArgsJson] = process.argv;
   if (cmd === 'call') {
     const toolArgs = toolArgsJson ? JSON.parse(toolArgsJson) : {};
     const result = await request('tools/call', {
       name: toolName,
-      arguments: toolArgs
+      arguments: toolArgs,
     });
     console.log('[tools/call result]', JSON.stringify(result, null, 2));
   } else {
@@ -142,4 +147,3 @@ main().catch((err) => {
   console.error('MCP client error:', err);
   process.exit(1);
 });
-

@@ -11,6 +11,12 @@ importers:
       '@fontsource/geist':
         specifier: ^5.2.6
         version: 5.2.6
+      '@onsvisual/charts-lib':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@onsvisual/svelte-charts':
+        specifier: ^0.4.11
+        version: 0.4.11(d3-delaunay@6.0.4)(d3-dsv@3.0.1)(d3-quadtree@3.0.1)(d3-scale@4.0.2)(d3-time-format@4.1.0)(layercake@10.0.1(svelte@5.36.13)(typescript@5.8.2))(svelte@5.36.13)
       '@reuters-graphics/graphics-components':
         specifier: ^3.0.14
         version: 3.0.14(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.36.13)(vite@6.2.3(@types/node@22.13.14)(jiti@2.4.2)(sass@1.86.0)(tsx@4.19.3)(yaml@2.8.1)))(svelte@5.36.13)(vite@6.2.3(@types/node@22.13.14)(jiti@2.4.2)(sass@1.86.0)(tsx@4.19.3)(yaml@2.8.1))
@@ -20,21 +26,36 @@ importers:
       '@types/three':
         specifier: ^0.179.0
         version: 0.179.0
+      archieml:
+        specifier: ^0.5.0
+        version: 0.5.0
       d3:
         specifier: ^7.9.0
         version: 7.9.0
+      d3-dsv:
+        specifier: ^3.0.1
+        version: 3.0.1
+      d3-quadtree:
+        specifier: ^3.0.1
+        version: 3.0.1
       js-yaml:
         specifier: ^4.1.0
         version: 4.1.0
       language-tags:
         specifier: ^1.0.9
         version: 1.0.9
+      layercake:
+        specifier: ^10.0.1
+        version: 10.0.1(svelte@5.36.13)(typescript@5.8.2)
       layerchart:
         specifier: ^1.0.11
         version: 1.0.11(svelte@5.36.13)(typescript@5.8.2)
       mapbox-gl:
-        specifier: ^3.14.0
-        version: 3.14.0
+        specifier: ^3.15.0
+        version: 3.15.0
+      svelte-dnd-action:
+        specifier: ^0.9.65
+        version: 0.9.65(svelte@5.36.13)
       three:
         specifier: ^0.179.1
         version: 0.179.1
@@ -1060,6 +1081,20 @@ packages:
   '@octokit/types@9.3.2':
     resolution: {integrity: sha512-D4iHGTdAnEEVsB8fl95m1hiz7D5YiRdQ9b/OEb3BYRVwbLsGHcRVPz+u+BgRLNk0Q0/4iZCBqDN96j2XNxfXrA==}
 
+  '@onsvisual/charts-lib@0.0.2':
+    resolution: {integrity: sha512-zqYrbiouIPCESiqUlfcFMQNs+MyaKkaCmt4dtNFluDAd3oT4IMOLm4p2AHn1+G/FmgqUYhpsl7UDvwB49Tlm4w==}
+
+  '@onsvisual/svelte-charts@0.4.11':
+    resolution: {integrity: sha512-lvhf/W1HN9e/aYTsqgdahygN4cTlXwBLuTI98a22qJnXK4A7l5GvAKbTDpk7BrqYTl3/48rXggzFsd1fFyl9uQ==}
+    peerDependencies:
+      d3-delaunay: ^6.0.2
+      d3-dsv: latest
+      d3-quadtree: latest
+      d3-scale: ^4.0.2
+      d3-time-format: ^4.1.0
+      layercake: ^8.4.3
+      svelte: 3 - 5
+
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
@@ -2045,6 +2080,9 @@ packages:
 
   archieml@0.4.2:
     resolution: {integrity: sha512-p8sXQqg9Wmud25PctpEOvrxqMGML5dZ7jiuv5QgJkZjjH8TrwxUqXVXBhxK1oTG7F246FwGM4r2RaAsevzbxgg==}
+
+  archieml@0.5.0:
+    resolution: {integrity: sha512-HhL+z+8toD2M9b+TijMR/3fmbs6dhWcATBstpQFTCqU4iyqDENznwZ4JRN0w3EkBbUL34jOv3PJK5/45VF9hJA==}
 
   archiver-utils@5.0.2:
     resolution: {integrity: sha512-wuLJMmIBQYCsGZgYLTy5FIB2pF6Lfb6cXMSF8Qywwk3t20zWnAi7zLcQFdKQmIB8wyZpY5ER38x08GbwtR2cLA==}
@@ -4095,6 +4133,13 @@ packages:
     resolution: {integrity: sha512-7W0vV3rqv5tokqkBAFV1LbR7HPOWzXQDpDgEuib/aJ1jsZZx6x3c2mBI+TJhJzOhkGeaLbCKEHXEXLfirtG2JA==}
     engines: {node: '>=18'}
 
+  layercake@10.0.1:
+    resolution: {integrity: sha512-jWSNkVOdCnc/GLjdi7pwigbgs1ItAwbw9WK4a2SWUZdxDG3qUnR5r6+glRVzWMW6M6dPIROfn5FY7X44S14goA==}
+    engines: {node: ^20.17.0 || >=22.9.0, npm: '>=11.0.0'}
+    peerDependencies:
+      svelte: '>=5'
+      typescript: ^5.0.2
+
   layercake@8.4.4:
     resolution: {integrity: sha512-94FCJSOxFZVSlBxu9JkMe0Xp+LZGju5MT8bGAghIdD1SI3mQsXR6sPVj0JNt7dharutJgta8GjZ44BUY66ewOg==}
     peerDependencies:
@@ -4197,8 +4242,8 @@ packages:
     resolution: {integrity: sha512-g3FeP20LNwhALb/6Cz6Dd4F2ngze0jz7tbzrD2wAV+o9FeNHe4rL+yK2md0J/fiSf1sa1ADhXqi5+oVwOM/eGw==}
     engines: {node: '>=8'}
 
-  mapbox-gl@3.14.0:
-    resolution: {integrity: sha512-KYhi9ZOQL4BB0J061admPH8O5ZZhhxsyiJ6DQCOkCaps0JEB4HF3SbJwu8S0pJKaQUxNS33sSbzW8iDSSauHPQ==}
+  mapbox-gl@3.15.0:
+    resolution: {integrity: sha512-I42ffZpiXwt0PG3PO6gMYQnoz+AInkirLe/+zoHjcfBTFoFkKYtu5gFwT1WGeSvNrVTqG2Bwp9zUjPw0PFGY+w==}
 
   markdown-extensions@2.0.0:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
@@ -5561,6 +5606,11 @@ packages:
     peerDependencies:
       svelte: ^4.0.0 || ^5.0.0-next.0
       typescript: '>=5.0.0'
+
+  svelte-dnd-action@0.9.65:
+    resolution: {integrity: sha512-GKFtrAtYAjcm27aMELoXOhkLtKA1AEoj2njjCReCer6jh1hnRtTHdEO4Kjfpayz+ZAvE0MMwIvLISW3tsiO9Qg==}
+    peerDependencies:
+      svelte: '>=3.23.0 || ^5.0.0-next.0'
 
   svelte-eslint-parser@1.1.1:
     resolution: {integrity: sha512-QLVGPIMDettl30qRHXU2VrPvVJKG8GsGstye7n8rFbEiu3gEARksuQg9Xu4GzubNxhGNM8stfBZkhyMbBQmjFA==}
@@ -7639,6 +7689,18 @@ snapshots:
     dependencies:
       '@octokit/openapi-types': 18.1.1
 
+  '@onsvisual/charts-lib@0.0.2': {}
+
+  '@onsvisual/svelte-charts@0.4.11(d3-delaunay@6.0.4)(d3-dsv@3.0.1)(d3-quadtree@3.0.1)(d3-scale@4.0.2)(d3-time-format@4.1.0)(layercake@10.0.1(svelte@5.36.13)(typescript@5.8.2))(svelte@5.36.13)':
+    dependencies:
+      d3-delaunay: 6.0.4
+      d3-dsv: 3.0.1
+      d3-quadtree: 3.0.1
+      d3-scale: 4.0.2
+      d3-time-format: 4.1.0
+      layercake: 10.0.1(svelte@5.36.13)(typescript@5.8.2)
+      svelte: 5.36.13
+
   '@oslojs/encoding@1.1.0': {}
 
   '@pagefind/darwin-arm64@1.3.0':
@@ -8911,6 +8973,8 @@ snapshots:
       picomatch: 2.3.1
 
   archieml@0.4.2: {}
+
+  archieml@0.5.0: {}
 
   archiver-utils@5.0.2:
     dependencies:
@@ -11374,6 +11438,15 @@ snapshots:
     dependencies:
       package-json: 10.0.1
 
+  layercake@10.0.1(svelte@5.36.13)(typescript@5.8.2):
+    dependencies:
+      d3-array: 3.2.4
+      d3-color: 3.1.0
+      d3-scale: 4.0.2
+      d3-shape: 3.2.0
+      svelte: 5.36.13
+      typescript: 5.8.2
+
   layercake@8.4.4(svelte@5.36.13)(typescript@5.8.2):
     dependencies:
       d3-array: 3.2.4
@@ -11502,7 +11575,7 @@ snapshots:
     dependencies:
       semver: 6.3.1
 
-  mapbox-gl@3.14.0:
+  mapbox-gl@3.15.0:
     dependencies:
       '@mapbox/jsonlint-lines-primitives': 2.0.2
       '@mapbox/mapbox-gl-supported': 3.0.0
@@ -13327,6 +13400,10 @@ snapshots:
       typescript: 5.8.2
     transitivePeerDependencies:
       - picomatch
+
+  svelte-dnd-action@0.9.65(svelte@5.36.13):
+    dependencies:
+      svelte: 5.36.13
 
   svelte-eslint-parser@1.1.1(svelte@5.36.13):
     dependencies:

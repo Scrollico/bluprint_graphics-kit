@@ -58,7 +58,7 @@
   {#each content.blocks as block}
     <!-- Text block -->
     {#if block.type === 'text'}
-      <BodyText text={block.text} />
+      <BodyText class="body-text" text={block.text} />
 
       <!-- Ai2svelte graphic block -->
     {:else if block.type === 'ai-graphic'}

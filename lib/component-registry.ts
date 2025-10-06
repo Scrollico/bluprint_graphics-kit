@@ -8,18 +8,21 @@ import type { SvelteComponent } from 'svelte';
 
 // Dynamic imports for all chart components
 const componentModules = {
-  'TurkeyMapChart': () => import('$lib/components/charts/TurkeyMapChart.svelte'),
-  'TurkeyMap': () => import('$lib/components/charts/TurkeyMap.svelte'),
-  'EuropeanMapChart': () => import('$lib/components/charts/EuropeanMapChart.svelte'), 
-  'EuropeMapChart': () => import('$lib/components/charts/EuropeMapChart.svelte'),
-  'IstanbulMetroMap': () => import('$lib/components/charts/IstanbulMetroMap.svelte'),
-  'MarmarayStationChart': () => import('$lib/components/charts/MarmarayStationChart.svelte'),
-  'ZoomableMap': () => import('$lib/components/charts/ZoomableMap.svelte'),
-  'SwarmChart': () => import('$lib/components/charts/SwarmChart.svelte'),
-  'TimeChart': () => import('$lib/components/charts/TimeChart.svelte'),
-  'IntroChart': () => import('$lib/components/charts/IntroChart.svelte'),
-  'DollarsBar': () => import('$lib/components/charts/DollarsBar.svelte'),
-  'Railroad3D': () => import('$lib/components/charts/Railroad3D.svelte')
+  TurkeyMapChart: () => import('$lib/components/charts/TurkeyMapChart.svelte'),
+  TurkeyMap: () => import('$lib/components/charts/TurkeyMap.svelte'),
+  EuropeanMapChart: () =>
+    import('$lib/components/charts/EuropeanMapChart.svelte'),
+  EuropeMapChart: () => import('$lib/components/charts/EuropeMapChart.svelte'),
+  IstanbulMetroMap: () =>
+    import('$lib/components/charts/IstanbulMetroMap.svelte'),
+  MarmarayStationChart: () =>
+    import('$lib/components/charts/MarmarayStationChart.svelte'),
+  ZoomableMap: () => import('$lib/components/charts/ZoomableMap.svelte'),
+  SwarmChart: () => import('$lib/components/charts/SwarmChart.svelte'),
+  TimeChart: () => import('$lib/components/charts/TimeChart.svelte'),
+  IntroChart: () => import('$lib/components/charts/IntroChart.svelte'),
+  DollarsBar: () => import('$lib/components/charts/DollarsBar.svelte'),
+  Railroad3D: () => import('$lib/components/charts/Railroad3D.svelte'),
 };
 
 // Component metadata for validation and auto-completion
@@ -34,9 +37,9 @@ export interface ComponentInfo {
   examples: ComponentExample[];
 }
 
-export type ComponentCapability = 
-  | 'zoom' 
-  | 'highlight' 
+export type ComponentCapability =
+  | 'zoom'
+  | 'highlight'
   | 'filter'
   | 'annotate'
   | 'animate'
@@ -53,7 +56,7 @@ export interface ComponentExample {
 
 // Component registry with full metadata
 export const componentRegistry: Record<ComponentName, ComponentInfo> = {
-  'TurkeyMapChart': {
+  TurkeyMapChart: {
     name: 'TurkeyMapChart',
     description: 'Interactive map of Turkey with regional data visualization',
     category: 'map',
@@ -66,20 +69,20 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
         title: 'Basic Turkey Map',
         description: 'Shows Turkey with basic regional coloring',
         props: { width: 800, height: 600 },
-        data: 'turkey.json'
+        data: 'turkey.json',
       },
       {
         title: 'Zoomed to Istanbul',
         description: 'Turkey map zoomed into Istanbul region',
-        props: { width: 800, height: 600, zoomRegion: 'istanbul' }
-      }
-    ]
+        props: { width: 800, height: 600, zoomRegion: 'istanbul' },
+      },
+    ],
   },
 
-  'TurkeyMap': {
+  TurkeyMap: {
     name: 'TurkeyMap',
     description: 'Simplified Turkey map component',
-    category: 'map', 
+    category: 'map',
     requiredProps: [],
     optionalProps: ['width', 'height'],
     dataFormat: 'geojson',
@@ -88,12 +91,12 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Simple Turkey Outline',
         description: 'Basic Turkey map outline',
-        props: { width: 600, height: 400 }
-      }
-    ]
+        props: { width: 600, height: 400 },
+      },
+    ],
   },
 
-  'EuropeanMapChart': {
+  EuropeanMapChart: {
     name: 'EuropeanMapChart',
     description: 'Interactive European map with country-level data',
     category: 'map',
@@ -106,21 +109,21 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
         title: 'EU Countries Data',
         description: 'European map showing data by country',
         props: { width: 900, height: 700 },
-        data: 'europe.geojson'
+        data: 'europe.geojson',
       },
       {
         title: 'Highlight Specific Countries',
         description: 'Highlight Turkey and neighboring countries',
-        props: { 
-          width: 900, 
+        props: {
+          width: 900,
           height: 700,
-          highlightCountries: ['TUR', 'GRC', 'BGR']
-        }
-      }
-    ]
+          highlightCountries: ['TUR', 'GRC', 'BGR'],
+        },
+      },
+    ],
   },
 
-  'EuropeMapChart': {
+  EuropeMapChart: {
     name: 'EuropeMapChart',
     description: 'Alternative European map component',
     category: 'map',
@@ -132,12 +135,12 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Europe Overview',
         description: 'General European map',
-        props: { width: 800, height: 600 }
-      }
-    ]
+        props: { width: 800, height: 600 },
+      },
+    ],
   },
 
-  'IstanbulMetroMap': {
+  IstanbulMetroMap: {
     name: 'IstanbulMetroMap',
     description: 'Istanbul metro system visualization',
     category: 'specialized',
@@ -149,17 +152,17 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Metro Lines Overview',
         description: 'All Istanbul metro lines',
-        props: { showStations: true }
+        props: { showStations: true },
       },
       {
         title: 'Highlight M2 Line',
         description: 'Highlight specific metro line',
-        props: { highlightLine: 'M2', showStations: true }
-      }
-    ]
+        props: { highlightLine: 'M2', showStations: true },
+      },
+    ],
   },
 
-  'MarmarayStationChart': {
+  MarmarayStationChart: {
     name: 'MarmarayStationChart',
     description: 'Marmaray train line with station data',
     category: 'specialized',
@@ -171,12 +174,12 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Station Incident Data',
         description: 'Shows incidents by station',
-        props: { showIncidents: true }
-      }
-    ]
+        props: { showIncidents: true },
+      },
+    ],
   },
 
-  'ZoomableMap': {
+  ZoomableMap: {
     name: 'ZoomableMap',
     description: 'Generic zoomable map component',
     category: 'map',
@@ -188,13 +191,13 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Zoomable Turkey',
         description: 'Turkey map with zoom controls',
-        props: { width: 800, height: 600, initialZoom: 1 }
-      }
-    ]
+        props: { width: 800, height: 600, initialZoom: 1 },
+      },
+    ],
   },
 
-  'SwarmChart': {
-    name: 'SwarmChart', 
+  SwarmChart: {
+    name: 'SwarmChart',
     description: 'Bee swarm plot for distribution visualization',
     category: 'chart',
     requiredProps: ['data'],
@@ -205,12 +208,12 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Value Distribution',
         description: 'Shows distribution of values as bee swarm',
-        props: { width: 600, height: 400 }
-      }
-    ]
+        props: { width: 600, height: 400 },
+      },
+    ],
   },
 
-  'TimeChart': {
+  TimeChart: {
     name: 'TimeChart',
     description: 'Time series line/area chart',
     category: 'chart',
@@ -222,18 +225,18 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Incidents Over Time',
         description: 'Shows incidents by month/year',
-        props: { 
-          width: 800, 
-          height: 400, 
+        props: {
+          width: 800,
+          height: 400,
           chartType: 'line',
           dateField: 'date',
-          valueField: 'count'
-        }
-      }
-    ]
+          valueField: 'count',
+        },
+      },
+    ],
   },
 
-  'IntroChart': {
+  IntroChart: {
     name: 'IntroChart',
     description: 'Introductory visualization component',
     category: 'chart',
@@ -245,18 +248,18 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Story Introduction',
         description: 'Opening visual for story',
-        props: { 
+        props: {
           title: 'Your Story Title',
-          subtitle: 'Data visualization story'
-        }
-      }
-    ]
+          subtitle: 'Data visualization story',
+        },
+      },
+    ],
   },
 
-  'DollarsBar': {
+  DollarsBar: {
     name: 'DollarsBar',
     description: 'Bar chart with currency formatting',
-    category: 'chart', 
+    category: 'chart',
     requiredProps: ['data'],
     optionalProps: ['width', 'height', 'currency', 'orientation'],
     dataFormat: 'array',
@@ -265,17 +268,17 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
       {
         title: 'Financial Data',
         description: 'Shows monetary values as bars',
-        props: { 
-          width: 600, 
+        props: {
+          width: 600,
           height: 400,
           currency: 'TRY',
-          orientation: 'vertical'
-        }
-      }
-    ]
+          orientation: 'vertical',
+        },
+      },
+    ],
   },
 
-  'Railroad3D': {
+  Railroad3D: {
     name: 'Railroad3D',
     description: '3D railroad/train visualization using Three.js',
     category: '3d',
@@ -289,15 +292,72 @@ export const componentRegistry: Record<ComponentName, ComponentInfo> = {
         description: 'Interactive 3D railroad visualization',
         props: {
           modelPath: '/statics/3d/uploads_files_3685451_railroad.glb',
-          cameraPosition: [0, 5, 10]
-        }
-      }
-    ]
-  }
+          cameraPosition: [0, 5, 10],
+        },
+      },
+    ],
+  },
+
+  // Blueprint Charts - New unified chart system
+  BlueprintChart: {
+    name: 'BlueprintChart',
+    description: 'Universal chart component supporting multiple chart types with consistent styling',
+    category: 'chart',
+    requiredProps: ['type'],
+    optionalProps: ['data', 'config', 'width', 'height', 'responsive', 'loading', 'error'],
+    dataFormat: 'array',
+    capabilities: ['responsive', 'interactive', 'animated', 'accessible', 'exportable'],
+    examples: [
+      {
+        title: 'Categorical Bar Chart',
+        description: 'Simple bar chart for categorical data',
+        props: {
+          type: 'categorical-bar',
+          data: [
+            { category: 'A', value: 10 },
+            { category: 'B', value: 20 },
+            { category: 'C', value: 15 }
+          ],
+          width: 600,
+          height: 400
+        },
+      },
+      {
+        title: 'Line Chart with Time Series',
+        description: 'Time series line chart',
+        props: {
+          type: 'line-area',
+          data: [
+            { date: '2023-01-01', value: 100 },
+            { date: '2023-02-01', value: 120 },
+            { date: '2023-03-01', value: 110 }
+          ],
+          width: 800,
+          height: 400
+        },
+      },
+      {
+        title: 'Parliament Chart',
+        description: 'Circular chart for parliamentary representation',
+        props: {
+          type: 'parliament',
+          data: [
+            { party: 'Party A', seats: 150, color: '#1f77b4' },
+            { party: 'Party B', seats: 120, color: '#ff7f0e' },
+            { party: 'Party C', seats: 80, color: '#2ca02c' }
+          ],
+          width: 600,
+          height: 600
+        },
+      },
+    ],
+  },
 };
 
 // Utility functions
-export async function loadComponent(componentName: ComponentName): Promise<typeof SvelteComponent | null> {
+export async function loadComponent(
+  componentName: ComponentName
+): Promise<typeof SvelteComponent | null> {
   try {
     const module = await componentModules[componentName]();
     return module.default;
@@ -307,19 +367,26 @@ export async function loadComponent(componentName: ComponentName): Promise<typeo
   }
 }
 
-export function getComponentsByCategory(category: ComponentInfo['category']): ComponentName[] {
+export function getComponentsByCategory(
+  category: ComponentInfo['category']
+): ComponentName[] {
   return Object.entries(componentRegistry)
     .filter(([_, info]) => info.category === category)
     .map(([name]) => name as ComponentName);
 }
 
-export function getComponentsByCapability(capability: ComponentCapability): ComponentName[] {
+export function getComponentsByCapability(
+  capability: ComponentCapability
+): ComponentName[] {
   return Object.entries(componentRegistry)
     .filter(([_, info]) => info.capabilities.includes(capability))
     .map(([name]) => name as ComponentName);
 }
 
-export function validateComponentProps(componentName: ComponentName, props: Record<string, any>): {
+export function validateComponentProps(
+  componentName: ComponentName,
+  props: Record<string, any>
+): {
   valid: boolean;
   errors: string[];
   warnings: string[];
@@ -327,28 +394,33 @@ export function validateComponentProps(componentName: ComponentName, props: Reco
   const info = componentRegistry[componentName];
   const errors: string[] = [];
   const warnings: string[] = [];
-  
+
   if (!info) {
     errors.push(`Unknown component: ${componentName}`);
     return { valid: false, errors, warnings };
   }
-  
+
   // Check required props
-  info.requiredProps.forEach(prop => {
+  info.requiredProps.forEach((prop) => {
     if (!(prop in props)) {
       errors.push(`Missing required prop: ${prop}`);
     }
   });
-  
+
   // Check for unknown props
-  Object.keys(props).forEach(prop => {
-    if (!info.requiredProps.includes(prop) && !info.optionalProps.includes(prop)) {
+  Object.keys(props).forEach((prop) => {
+    if (
+      !info.requiredProps.includes(prop) &&
+      !info.optionalProps.includes(prop)
+    ) {
       warnings.push(`Unknown prop: ${prop}. May be ignored.`);
     }
   });
-  
+
   return { valid: errors.length === 0, errors, warnings };
 }
 
 // Export available components for AI/autocomplete
-export const availableComponents = Object.keys(componentRegistry) as ComponentName[];
+export const availableComponents = Object.keys(
+  componentRegistry
+) as ComponentName[];

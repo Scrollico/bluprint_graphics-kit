@@ -1,63 +1,39 @@
-[mcp_servers.browsermcp]
+model = "gpt-5-codex"
+model_reasoning_effort = "low"
+
+[mcpServers.analytics-mcp]
+type = "http"
+url = "https://my-mcp-server.dry-paper-2b40.workers.dev/mcp"
+headers = {}
+
+[mcpServers.linear]
 command = "npx"
-args = ["@browsermcp/mcp@latest", "start"]
+args = ["-y", "mcp-remote", "https://mcp.linear.app/sse"]
 
-# Codex CLI Configuration
-# This file configures the Codex CLI tool for AI-powered code assistance
+[mcpServers.mcp-server-chart]
+command = "npx"
+args = ["-y", "@antv/mcp-server-chart"]
 
-[codex]
-# Your Codex API key (required)
-# Get this from https://codex.anthropic.com/
-api_key = ""
+[mcpServers.context7]
+url = "https://mcp.context7.com/mcp"
+headers = { CONTEXT7_API_KEY = "ctx7sk-92123302-752b-48e9-a8fe-9da351715144" }
 
-# Model to use for code generation and assistance
-# Options: claude-3-5-sonnet, claude-3-opus, claude-3-sonnet, claude-3-haiku
-model = "claude-3-5-sonnet"
+[mcpServers.chrome-devtools]
+command = "pnpx"
+args = ["chrome-devtools-mcp@latest"]
 
-# Temperature for generation (0.0 = deterministic, 1.0 = creative)
-temperature = 0.1
+[mcpServers.TaskManager]
+command = "npx"
+args = ["-y", "@smithery/cli@latest", "run", "@kazuph/mcp-taskmanager", "--config", "{}"]
 
-# Maximum tokens for responses
-max_tokens = 4000
+[mcpServers."Reddit Content Fetcher"]
+type = "http"
+url = "https://server.smithery.ai/@ruradium/mcp-reddit/mcp?api_key=32c7eb66-e46c-4eb4-835f-a871a082afef"
+headers = {}
 
-# Context window size
-context_window = 200000
+[projects."/Users/nihatavci/bluprint_graphics-kit"]
+trust_level = "trusted"
 
-# Default language for code generation
-language = "typescript"
-
-# Project-specific settings
-[codex.project]
-# Project type
-type = "sveltekit"
-
-# Framework-specific configurations
-framework = "sveltekit"
-version = "2.0"
-
-# Code style preferences
-[codex.style]
-# Indentation style
-indent = "  "
-
-# Quote style preference
-quotes = "single"
-
-# Semicolon usage
-semicolons = true
-
-# Line length limit
-max_line_length = 100
-
-# File organization preferences
-[codex.organization]
-# Component structure
-components_dir = "src/lib/components"
-pages_dir = "pages"
-styles_dir = "src/lib/styles"
-utils_dir = "src/utils"
-
-# Naming conventions
-component_prefix = ""
-file_naming = "kebab-case"
-component_naming = "PascalCase"
+[mcp_servers.linear]
+command = "npx"
+args = ["-y", "linear"]

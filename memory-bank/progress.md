@@ -44,6 +44,17 @@ The project is in active development with a focus on the Marmaray story implemen
 - **Git Hooks**: Lefthook pre-commit checks
 - **Testing Framework**: Vitest setup
 
+### NEW: ArchieML Scrollytelling System ✅
+
+- **ArchieML Parser**: Converts Google Docs to structured story format
+- **Google Docs Integration**: Direct sync from Google Docs (public documents)
+- **Robust Scroll Engine**: Deterministic step detection with debugging
+- **Visual Editor Dashboard**: Step management, reordering, and live preview
+- **Mapbox Integration**: Smooth, step-based map transitions with camera control
+- **Component Registry**: Visual mapping of narrative steps to components
+- **Debug Mode**: Step boundaries, scroll progress, and map state visualization
+- **Export/Import**: JSON export for stories and ArchieML template generation
+
 ## What's Left to Build
 
 ### High Priority
