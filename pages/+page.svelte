@@ -72,7 +72,7 @@
       text: `Her şey bir anda oldu. Tarih, 30 Ekim 2021. Soğuk bir sonbahar akşamı, saat 18.18.\nMarmaray, her zamanki Halkalı-Gebze seferini yapmak üzere raylarda ilerliyordu. Ancak o gün her zamanki rutinini yapan sadece o değildi. Bir yurttaş da yorucu bir günün ardından iş çıkış saatinde, evine gitmek üzere Marmaray Bostancı istasyonuna doğru yürüyordu.`,
       visual: 'video',
       align: 'left',
-      videoSrc: '/video/step-1.mp4',
+      videoSrc: '/videos/marmaray/marmaray-intro.mp4',
     },
     {
       id: 'step-4-2',
@@ -80,7 +80,7 @@
       text: `Marmaray treni Suadiye istasyonundan ayrıldığı sırada o yurttaş da Bostancı istasyonundaki turnikelere İstanbulkartı’nı okutup perona doğru ilerlemeye başladı. Yaklaşık bir dakikalık bekleyişin ardından trenin ışıkları göründü. Hızla yaklaşan treni gören yurttaş, sakin adımlarla sarı çizgiye doğru ilermeye başladı.`,
       visual: 'video',
       align: 'center',
-      videoSrc: '/video/step-2.mp4',
+      videoSrc: '/videos/marmaray/marmaray-720.mp4',
     },
     {
       id: 'step-4-3',
@@ -88,7 +88,7 @@
       text: `Sonrasında her şey bir anda oldu.\n\nTren tam yavaşlamaya başlayacaktı ki, peronun en ucunda, trenle peronun kesiştiği noktada bekleyen yurttaş, trenin hız kaybetmesine fırsat vermeden attı kendini raylara doğru. Önce trene çarptı, ardından da çarpmanın etkisiyle ileri savrularak trenin altında kaldı.`,
       visual: 'video',
       align: 'right',
-      videoSrc: '/video/step-3.mp4',
+      videoSrc: '/videos/marmaray/marmaray-1080.mp4',
     },
     {
       id: 'step-5-1',
@@ -619,8 +619,23 @@
       {#if currentStep}
         {#if currentStep.type === 'video'}
           <div class="video-frame {currentStep.align || 'center'}">
-            <video src={currentStep.videoSrc} autoplay muted playsinline loop
-            ></video>
+            <video
+              autoplay
+              muted
+              playsinline
+              loop
+              preload="metadata"
+              on:error={(e) => console.error('Video error:', e)}
+              on:loadstart={() =>
+                console.log('Video loading:', currentStep.videoSrc)}
+              on:canplay={() =>
+                console.log('Video can play:', currentStep.videoSrc)}
+            >
+              {#if currentStep.videoSrc}
+                <source src={currentStep.videoSrc} type="video/mp4" />
+              {/if}
+              Your browser does not support the video tag.
+            </video>
           </div>
         {:else if currentStep.visual === 'yearly-trend' || currentStep.visual === 'yearly-analysis'}
           <div class="chart-container">
@@ -951,6 +966,7 @@
   .video-frame video {
     width: min(720px, 90%);
     border-radius: 12px;
+    background: #000;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 
