@@ -620,6 +620,7 @@
         {#if currentStep.type === 'video'}
           <div class="video-frame {currentStep.align || 'center'}">
             <video
+              key={currentStep.videoSrc}
               autoplay
               muted
               playsinline
