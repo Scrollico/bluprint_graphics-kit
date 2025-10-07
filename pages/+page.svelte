@@ -362,6 +362,16 @@
     currentStepIndex = event.detail.index;
     currentStep = event.detail.step;
 
+    // Debug logging for video steps
+    if (currentStep?.type === 'video') {
+      console.log(
+        'Video step entered:',
+        currentStep.id,
+        'Video:',
+        currentStep.videoSrc
+      );
+    }
+
     // Handle transition from step 18.5 to step 19
     if (currentStep?.id === 'step-19') {
       // Trigger seamless bubble transition
@@ -514,6 +524,15 @@
 
   $: mapTarget = computeMapTarget(currentStep);
 
+  // Force video re-render when step changes
+  $: if (currentStep?.type === 'video') {
+    console.log(
+      'Video step reactive update:',
+      currentStep.id,
+      currentStep.videoSrc
+    );
+  }
+
   function shouldShowChart(): boolean {
     return (
       currentStep?.visual?.includes('trend') ||
@@ -620,7 +639,7 @@
         {#if currentStep.type === 'video'}
           <div class="video-frame {currentStep.align || 'center'}">
             <video
-              key={currentStep.videoSrc}
+              key="{currentStep.id}-{currentStep.videoSrc}"
               autoplay
               muted
               playsinline
@@ -628,9 +647,19 @@
               preload="metadata"
               on:error={(e) => console.error('Video error:', e)}
               on:loadstart={() =>
-                console.log('Video loading:', currentStep.videoSrc)}
+                console.log(
+                  'Video loading:',
+                  currentStep.videoSrc,
+                  'for step:',
+                  currentStep.id
+                )}
               on:canplay={() =>
-                console.log('Video can play:', currentStep.videoSrc)}
+                console.log(
+                  'Video can play:',
+                  currentStep.videoSrc,
+                  'for step:',
+                  currentStep.id
+                )}
             >
               {#if currentStep.videoSrc}
                 <source src={currentStep.videoSrc} type="video/mp4" />
